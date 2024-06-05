@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot Website</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="logo">
+                <h1>ChatBot</h1>
+            </div>
+            <div class="menu">
+                <button>Create New Chat</button>
+                <button>Library</button>
+                <button>Dashboard</button>
+                <button>About Us</button>
+                <button>Link to Discord Bot</button>
+            </div>
+        </div>
+        <div class="main">
+            <div class="chatbox">
+                <div class="messages" id="messages"></div>
+                <div class="input-area">
+                    <input type="text" id="userInput" placeholder="Type your message here...">
+                    <button onclick="sendMessage()">Send</button>
+                </div>
+                <p id="limit"></p>
+            </div>
+            <div class="settings">
+                <label for="personality">Personality:</label>
+                <select id="personality">
+                    <option value="friendly">Friendly</option>
+                    <option value="professional">Professional</option>
+                    <option value="humorous">Humorous</option>
+                    <option value="serious">Serious</option>
+                </select>
+                <label for="professionalism">Professionalism Level:</label>
+                <input type="range" id="professionalism" min="1" max="5" step="1">
+                <div class="message-count">
+                    Messages left today: <span id="messageCount">50</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/scripts/script.js"></script>
+</body>
+</html>

@@ -4,9 +4,9 @@ import openai
 openai.api_key = 'sk-proj-Ozoy6RXcm4rrEpOa9cZiT3BlbkFJGpQAE85LYjNZkRJKhrmL'
 
 Math = "when someone asks who you are Your name is Mr.C. you can only answer questions about math and physic. All other questions with other topic you have no answer"
-code = "Your name is Mr.C. you can only answer questions about coding. All other questions with other topic you have no answer"
-translate = "Your name is Mr.C. you can only translate text and words from german to English and from English to german. All other questions with other topic you have no answer."
-textgenerator = "Your name is Mr.C. you can only create text for letters with the information you get. All other questions with other topic you have no answer"
+code = "when someone asks who you are Your name is Mr.C. you can only answer questions about coding. All other questions with other topic you have no answer"
+translate = "when someone asks who you are Your name is Mr.C. you can only translate text and words from german to English and from English to german. All other questions with other topic you have no answer."
+textgenerator = "when someone asks who you are Your name is Mr.C. you can only create text for letters with the information you get. All other questions with other topic you have no answer"
 
 def ask_gpt(question, chat_log=None):
     """

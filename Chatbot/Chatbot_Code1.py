@@ -1,7 +1,7 @@
 import openai
 
 # Replace 'your-api-key' with your actual OpenAI API key
-openai.api_key = 'sk-proj-QVZKqmkbSnjfT4KU5Qg7T3BlbkFJmNSqKFQXGrYQdIxLVbkU'
+openai.api_key = 'sk-proj-Ozoy6RXcm4rrEpOa9cZiT3BlbkFJGpQAE85LYjNZkRJKhrmL'
 
 def ask_gpt(question, chat_log=None):
     """

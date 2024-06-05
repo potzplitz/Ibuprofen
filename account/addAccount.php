@@ -9,7 +9,7 @@ $password = $_POST['password'];
 addToDatabase($username, $email, $password);
 
 function addToDatabase($username, $email, $password) {
-
+    addData($username, $email, $password);
 }
 
 ?>

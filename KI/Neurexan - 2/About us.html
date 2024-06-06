@@ -13,8 +13,8 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f8f9fa;
-            color: #333;
+            background-color: #f4f4f4;
+            color: #444;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -42,7 +42,6 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            position: relative;
             margin: 20px;
             overflow: hidden;
             border-radius: 20px;
@@ -55,8 +54,8 @@
         }
 
         .team-member img {
-            width: 250px;
-            height: 250px;
+            width: 200px;
+            height: 200px;
             object-fit: cover;
             border-radius: 50%;
         }
@@ -69,7 +68,7 @@
         }
 
         .team-member p {
-            color: #6c757d;
+            color: #555;
             font-size: 1rem;
             line-height: 1.4;
             margin-bottom: 20px;
@@ -79,13 +78,31 @@
             text-overflow: ellipsis;
         }
 
+        .philosophy-container {
+            position: relative;
+            z-index: 1;
+            background-color: #fff;
+            border-radius: 20px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .pattern-container:hover .philosophy-container {
+            transform: translateY(-10px);
+        }
+
         .philosophy {
             font-size: 1.1rem;
             line-height: 1.6;
-            color: #6c757d;
+            color: #666;
             margin-top: 40px;
             text-align: left;
-            padding: 0 15px;
+            padding: 20px;
+        }
+
+        .pattern-container {
+            position: relative;
+            margin-top: 40px;
         }
     </style>
 </head>
@@ -123,7 +140,15 @@
             <p>CEO. Als CEO leitet Johannes unser Team mit Begeisterung und sorgt für eine klare Vision und strategische Ausrichtung.</p>
         </div>
 
-        <p class="philosophy">
-            Unsere Philosophie gründet sich auf dem Glauben, dass KI das Potenzial hat, das Leben jedes Einzelnen zu bereichern und zu verbessern. Wir sind davon überzeugt, dass Technologie für alle zugänglich sein sollte, unabhängig vom technischen Wissensstand. Aus diesem Grund haben wir uns zur Aufgabe gemacht, KI-Persönlichkeiten zu entwickeln, die intuitiv, benutzerfreundlich und für jeden leicht verständlich sind.
+        <div class="pattern-container">
+            <div class="philosophy-container">
+                <p class="philosophy">
+                    Unsere Philosophie gründet sich auf dem Glauben, dass KI das Potenzial hat, das Leben jedes Einzelnen zu bereichern und zu verbessern. Wir sind davon überzeugt, dass Technologie für alle zugänglich sein sollte, unabhängig vom technischen Wissensstand. Aus diesem Grund haben wir uns zur Aufgabe gemacht, KI-Persönlichkeiten zu entwickeln, die intuitiv, benutzerfreundlich und für jeden leicht verständlich sind. <br><br>
 
-            Wir glauben an die Kraft der Vielfalt und daran, dass KI-Persönlichkeiten für verschiedene Alltagssituationen Menschen auf unterschiedliche Weise unterstützen können. Egal, ob es darum geht, den Tag Mathe Aufgaben zu lösen, Texte zu übersetzen oder Code zu verbessern – wir möchten, dass unsere KI-Persönlichkeiten ein breites
+                    Wir glauben an die Kraft der Vielfalt und daran, dass KI-Persönlichkeiten für verschiedene Alltagssituationen Menschen auf unterschiedliche Weise unterstützen können. Egal, ob es darum geht, den Tag Mathe Aufgaben zu lösen, Texte zu übersetzen oder Code zu verbessern – wir möchten, dass unsere KI-Persönlichkeiten ein breites Spektrum an Bedürfnissen abdecken.
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

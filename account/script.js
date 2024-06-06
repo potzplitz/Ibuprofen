@@ -7,7 +7,7 @@ function submit() {
 
     if(password == confirm && password != "" && confirm != "" && username != "" && email != "") {
         makeRequest(username, email, password);
-        window.location.href = "../index.html?create=success";
+        
     } else {
         let errorBox = document.getElementById("errorDiv");
         errorBox.style.visibility="visible";
@@ -21,12 +21,18 @@ var xhr = new XMLHttpRequest();
 xhr.open('POST', 'addAccount.php', true);
 xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 xhr.onload = function () {
+
+console.log(xhr.status);
+
   if (xhr.status === 200) {
     console.log('Antwort:', xhr.responseText);
+    window.location.href = "../index.html?create=success";
   } else {
     console.error('Fehler beim Server-Request:', xhr.statusText);
   }
 };
+
+console.log(username + email + password);
 
 var params = 'username=' + encodeURIComponent(username) +
                '&email=' + encodeURIComponent(email) +
@@ -34,27 +40,5 @@ var params = 'username=' + encodeURIComponent(username) +
 
 xhr.send(params);
 
-}
-
-document.addEventListener('DOMContentLoaded', (event) => {
-    const inputs = document.querySelectorAll('.input');
-
-    inputs.forEach(input => {
-        input.addEventListener('focus', function() {
-            if (this.value === this.placeholder) {
-                this.value = '';
-            }
-        }, false);
-
-        input.addEventListener('blur', function() {
-            if (this.value === '') {
-                this.value = this.placeholder;
-            }
-        }, false);
-    });
-});
-
-function login() {
-    
 }
 

@@ -6,14 +6,14 @@ if ($mysqli->connect_error) {
     die("Verbindungsfehler: " . $mysqli->connect_error);
 }
 
-function addData($username, $email, $password, $token) {
+function addData($username, $email, $password) {
 
     global $mysqli;
 
-    $sql = "INSERT INTO users (username, email, passwort, token) VALUES (?, ?, ?, ?)";
+    $sql = "INSERT INTO users (username, email, passwort) VALUES (?, ?, ?)";
     
     $stmt = $mysqli->prepare($sql);
-    $stmt->bind_param('ssss', $username, $email, $password, $token);
+    $stmt->bind_param('sss', $username, $email, $password);
 
     $stmt->execute();
 
@@ -30,16 +30,19 @@ if (!function_exists('getData')) {
     function getData($email, $userid) {
         global $mysqli;
 
-        if(isset($email)) {
+        if($email != "") {
             $sql = "SELECT * FROM users WHERE email = ?";
-        }
+            $stmt = $mysqli->prepare($sql);
+            $stmt->bind_param('s', $email);
 
-        if(isset($userid)) {
+        } else if($userid != "") {
             $sql = "SELECT * FROM users WHERE userID = ?";
+            $stmt = $mysqli->prepare($sql);
+            $stmt->bind_param('s', $userid);
+
         }
     
-        $stmt = $mysqli->prepare($sql);
-        $stmt->bind_param('s', $email);
+        
         $stmt->execute();
         
         $result = $stmt->get_result();

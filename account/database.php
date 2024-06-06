@@ -26,5 +26,7 @@ function addData($username, $email, $password) {
     $stmt->close(); 
 }
 
+function getData($email, $password);
+
 
 ?>

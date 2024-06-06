@@ -20,19 +20,6 @@
         <div class="main">
             <div class="chat-header">
                 <h2>Chat with Mr. C</h2>
-                <div class="settings">
-                    <label for="personality">Personality:</label>
-                    <select id="personality" onchange="changePersonality()">
-                        <option value="friendly">Friendly</option>
-                        <option value="professional">Professional</option>
-                        <option value="funny">Funny</option>
-                        <option value="serious">Serious</option>
-                        <option value="sarcastic">Sarcastic</option>
-                    </select>
-                    <label for="professionalism">Professionalism:</label>
-                    <input type="range" id="professionalism" min="1" max="5" step="1" onchange="changeProfessionalism()">
-                    <span id="messageCount">Messages Left: 100</span>
-                </div>
             </div>
             <div class="chat-box" id="chatBox">
                 <!-- Messages will appear here -->
@@ -41,6 +28,20 @@
                 <img src="profile-picture.png" alt="Profile Picture" class="profile-picture">
                 <input type="text" id="messageInput" placeholder="Type your message...">
                 <button onclick="sendMessage()">➔</button>
+            </div>
+            <button class="settings-button" onclick="toggleSettings()">^</button>
+            <div class="settings-panel" id="settingsPanel">
+                <label for="personality">Personality:</label>
+                <select id="personality" onchange="changePersonality()">
+                    <option value="friendly">Friendly</option>
+                    <option value="professional">Professional</option>
+                    <option value="funny">Funny</option>
+                    <option value="serious">Serious</option>
+                    <option value="sarcastic">Sarcastic</option>
+                </select>
+                <label for="professionalism">Professionalism:</label>
+                <input type="range" id="professionalism" min="1" max="5" step="1" onchange="changeProfessionalism()">
+                <span id="messageCount">Messages Left: 100</span>
             </div>
         </div>
     </div>

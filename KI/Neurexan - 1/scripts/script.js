@@ -1,3 +1,4 @@
+
 let messageCount = 50;
 
 function sendMessage() {
@@ -17,6 +18,7 @@ function sendMessage() {
             <img src="profile-pic-url" alt="Profile Picture">
         </div>
         <div class="message-content">
+            
             ${userInput.value}
         </div>
     `;
@@ -32,5 +34,5 @@ function sendMessage() {
     if(messageCount <= 0) {
         document.getElementById
     }
-
+  
 }

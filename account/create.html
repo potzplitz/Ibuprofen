@@ -8,11 +8,16 @@
     <title>Account Erstellen</title>
 </head>
 <body>
+    <p id="title">Account erstellen</p>
+    <div id="errorDiv">
+        <h3 class="message" id="messageHeader">Erstellungsfehler</h3>
+        <p class="message" id="messageText">Die Felder dürfen nicht leer sein oder die Passwörter stimmen nicht überein!</p>
+    </div>
     <div class="createDiv">
-        <input type="text" id="usernameinput" class="input" value="Benutzername">
-        <input type="email" id="emailinput" class="input" value="Email">
-        <input type="text" id="passwordinput" class="input" value="Passwort">
-        <input type="text" id="confirminput" class="input" value="Passwort bestätigen">
+        <input type="text" id="usernameinput" class="input" placeholder="Benutzername">
+        <input type="email" id="emailinput" class="input" placeholder="Email">
+        <input type="password" id="passwordinput" class="input" placeholder="Passwort">
+        <input type="password" id="confirminput" class="input" placeholder="Passwort bestätigen">
         <input type="button" value="Account erstellen" class="create" id="submit" onclick="submit()">
     </div>
 </body>

@@ -5,10 +5,11 @@ function submit() {
     let password = document.getElementById("passwordinput").value;
     let confirm = document.getElementById("confirminput").value;
 
-    if(password == confirm) {
+    if(password == confirm && password != "" && confirm != "" && username != "" && email != "") {
         makeRequest(username, email, password);
     } else {
-        // feedback auf website
+        let errorBox = document.getElementById("errorDiv");
+        errorBox.style.visibility="visible";
     }
     
 }
@@ -33,3 +34,22 @@ var params = 'username=' + encodeURIComponent(username) +
 xhr.send(params);
 
 }
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    const inputs = document.querySelectorAll('.input');
+
+    inputs.forEach(input => {
+        input.addEventListener('focus', function() {
+            if (this.value === this.placeholder) {
+                this.value = '';
+            }
+        }, false);
+
+        input.addEventListener('blur', function() {
+            if (this.value === '') {
+                this.value = this.placeholder;
+            }
+        }, false);
+    });
+});
+

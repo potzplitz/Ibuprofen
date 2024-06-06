@@ -1,5 +1,6 @@
 body {
     background-color: #212121;
+    font-family: Arial, sans-serif;
 }
 
 .createDiv {
@@ -8,7 +9,7 @@ body {
     height: 330px;
     border-radius: 20px;
     margin: 0 auto;
-    margin-top: 12%;
+    margin-top: 1.5%;
     box-shadow: #0b0b0b 5px 5px 5px;
 }
 
@@ -30,4 +31,25 @@ body {
     border-radius: 6px;
     padding: 10px;
     margin-top: 15px;
+}
+
+#title {
+    width: 100%;
+    text-align: center;
+    font-size: 24px;
+    color: white;
+}
+
+#errorDiv {
+    visibility: hidden;
+    width: 20%;
+    height: 100px;
+    margin: 0 auto;
+    border-radius: 20px;
+    background-color: red;
+}
+
+.message {
+    width: 100%;
+    text-align: center;
 }

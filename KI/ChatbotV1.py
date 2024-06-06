@@ -22,7 +22,7 @@ def ask_gpt(question, chat_log=None, role="math"):
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",  # You can use other models as needed
         messages=[
-            {"role": "system", "content": textgenerator},
+            {"role": "system", "content": Math},
         ] + chat_log + [{"role": "user", "content": question}]
     )
 

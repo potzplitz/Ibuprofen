@@ -7,6 +7,7 @@ function submit() {
 
     if(password == confirm && password != "" && confirm != "" && username != "" && email != "") {
         makeRequest(username, email, password);
+        window.location.href = "../index.html?create=success";
     } else {
         let errorBox = document.getElementById("errorDiv");
         errorBox.style.visibility="visible";

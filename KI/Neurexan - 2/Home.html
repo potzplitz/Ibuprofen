@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot Website</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h1>Chatbot</h1>
+            <button class="new-chat-button" onclick="createNewChat()">Create New Chat</button>
+            <button onclick="openLibrary()">Library</button>
+            <button onclick="openDashboard()">Dashboard</button>
+            <button onclick="openPrompt()">Chat Prompt</button>
+            <button onclick="openAboutUs()">About Us</button>
+            <a href="https://discord.gg/yourdiscordlink" target="_blank">Discord Bot</a>
+        </div>
+        <div class="main">
+            <div class="chat-header">
+                <h2>Chat with Mr. C</h2>
+                <div class="settings">
+                    <label for="personality">Personality:</label>
+                    <select id="personality" onchange="changePersonality()">
+                        <option value="friendly">Friendly</option>
+                        <option value="professional">Professional</option>
+                        <option value="funny">Funny</option>
+                        <option value="serious">Serious</option>
+                        <option value="sarcastic">Sarcastic</option>
+                    </select>
+                    <label for="professionalism">Professionalism:</label>
+                    <input type="range" id="professionalism" min="1" max="5" step="1" onchange="changeProfessionalism()">
+                    <span id="messageCount">Messages Left: 100</span>
+                </div>
+            </div>
+            <div class="chat-box" id="chatBox">
+                <!-- Messages will appear here -->
+            </div>
+            <div class="chat-input">
+                <img src="profile-picture.png" alt="Profile Picture" class="profile-picture">
+                <input type="text" id="messageInput" placeholder="Type your message...">
+                <button onclick="sendMessage()">➔</button>
+            </div>
+        </div>
+    </div>
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <span class="close" onclick="closePopup()">&times;</span>
+            <p>You have used all of your daily messages.</p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

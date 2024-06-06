@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot Website</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="logo">
+                <h1>ChatBot</h1>
+            </div>
+            <div class="menu">
+                <button>Create New Chat</button>
+                <button>Library</button>
+                <button>Dashboard</button>
+              <a href ="About us.html">  <button>About Us</button></a>
+                <button>Link to Discord Bot</button>
+            </div>
+        </div>
+        <div class="main">
+            <div class="chatbox">
+                <div class="messages" id="messages"></div>
+                <div class="input-area">
+                    <div class="settings-button" onclick="toggleSettings()">^</div>
+                    <input type="text" id="userInput" placeholder="Type your message here...">
+                    <button onclick="sendMessage()">Send</button>
+                </div>
+                <div class="settings" id="settings">
+                    <label for="personality">Personality:</label>
+                    <select id="personality">
+                        <option value="friendly">Friendly</option>
+                        <option value="professional">Professional</option>
+                        <option value="humorous">Humorous</option>
+                        <option value="serious">Serious</option>
+                    </select>
+                    <label for="professionalism">Professionalism Level:</label>
+                    <input type="range" id="professionalism" min="1" max="5" step="1">
+                    <div class="message-count">
+                        Messages left today: <span id="messageCount">50</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for message limit reached -->
+    <div id="messageLimitModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <p>You have reached your daily message limit.</p>
+        </div>
+    </div>
+
+    <script>
+        function sendMessage() {
+            const userInput = document.getElementById('userInput');
+            const messages = document.getElementById('messages');
+            const messageCountElem = document.getElementById('messageCount');
+
+            if (userInput.value.trim() === '') {
+                return;
+            }
+
+            fetch('/send_message', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: `message=${encodeURIComponent(userInput.value)}`
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    showModal();
+                } else {
+                    // Add user message
+                    const userMessageElem = document.createElement('div');
+                    userMessageElem.classList.add('message');
+                    userMessageElem.innerHTML = `
+                        <div class="profile-pic">
+                            <img src="profile-pic-url" alt="Profile Picture">
+                        </div>
+                        <div class="message-content">
+                            ${data.user_message}
+                        </div>
+                    `;
+                    messages.appendChild(userMessageElem);
+
+                    // Add bot response
+                    const botMessageElem = document.createElement('div');
+                    botMessageElem.classList.add('message');
+                    botMessageElem.innerHTML = `
+                        <div class="profile-pic">
+                            <img src="bot-pic-url" alt="Bot Picture">
+                        </div>
+                        <div class="message-content">
+                            ${data.bot_response}
+                        </div>
+                    `;
+                    messages.appendChild(botMessageElem);
+
+                    // Clear the input field
+                    userInput.value = '';
+
+                    // Update message count
+                    messageCountElem.textContent = data.message_count;
+                }
+            });
+        }
+
+        function toggleSettings() {
+            const settings = document.getElementById('settings');
+            if (settings.style.display === 'block') {
+                settings.style.display = 'none';
+            } else {
+                settings.style.display = 'block';
+            }
+        }
+
+        function showModal() {
+            const modal = document.getElementById('messageLimitModal');
+            modal.style.display = 'block';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('messageLimitModal');
+            modal.style.display = 'none';
+        }
+
+        // Close the modal when clicking outside of it
+        window.onclick = function(event) {
+            const modal = document.getElementById('messageLimitModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>

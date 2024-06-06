@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #444;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            color: #007bff;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+
+        .team-member {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+        }
+
+        .team-member img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .team-member h3 {
+            margin-top: 20px;
+            color: #007bff;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .team-member p {
+            color: #555;
+            font-size: 1rem;
+            line-height: 1.4;
+            margin-bottom: 20px;
+            padding: 0 15px;
+            flex-grow: 1;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .philosophy-container {
+            position: relative;
+            z-index: 1;
+            background-color: #fff;
+            border-radius: 20px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .pattern-container:hover .philosophy-container {
+            transform: translateY(-10px);
+        }
+
+        .philosophy {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #666;
+            margin-top: 40px;
+            text-align: left;
+            padding: 20px;
+        }
+
+        .pattern-container {
+            position: relative;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>About Us</h1>
+        
+        <div class="team-member">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Hausziege_04.jpg" alt="Jan">
+            <h3>Jan</h3>
+            <p>GOAT für Datenbanken SQL, PHP. Er ist unser erfahrenster Entwickler, der komplexe Datenbanken entwirft und verwaltet.</p>
+        </div>
+        
+        <div class="team-member">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Hausziege_04.jpg" alt="Finn">
+            <h3>Finn</h3>
+            <p>KI-Konfiguration. Finn ist unser Spezialist für KI-Konfigurationen und entwickelt maßgeschneiderte Lösungen für unsere Kunden.</p>
+        </div>
+
+        <div class="team-member">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Hausziege_04.jpg" alt="Daniel">
+            <h3>Daniel</h3>
+            <p>Webdesign. Daniel ist verantwortlich für das Design unserer Webseiten und sorgt für eine intuitive Benutzererfahrung.</p>
+        </div>
+
+        <div class="team-member">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Hausziege_04.jpg" alt="Emil">
+            <h3>Emil</h3>
+            <p>Webdesign. Emil arbeitet eng mit Daniel zusammen und unterstützt bei der Entwicklung ansprechender Designs.</p>
+        </div>
+
+        <div class="team-member">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Hausziege_04.jpg" alt="Johannes">
+            <h3>Johannes</h3>
+            <p>CEO. Als CEO leitet Johannes unser Team mit Begeisterung und sorgt für eine klare Vision und strategische Ausrichtung.</p>
+        </div>
+
+        <div class="pattern-container">
+            <div class="philosophy-container">
+                <p class="philosophy">
+                    Unsere Philosophie gründet sich auf dem Glauben, dass KI das Potenzial hat, das Leben jedes Einzelnen zu bereichern und zu verbessern. Wir sind davon überzeugt, dass Technologie für alle zugänglich sein sollte, unabhängig vom technischen Wissensstand. Aus diesem Grund haben wir uns zur Aufgabe gemacht, KI-Persönlichkeiten zu entwickeln, die intuitiv, benutzerfreundlich und für jeden leicht verständlich sind. <br><br>
+
+                    Wir glauben an die Kraft der Vielfalt und daran, dass KI-Persönlichkeiten für verschiedene Alltagssituationen Menschen auf unterschiedliche Weise unterstützen können. Egal, ob es darum geht, den Tag Mathe Aufgaben zu lösen, Texte zu übersetzen oder Code zu verbessern – wir möchten, dass unsere KI-Persönlichkeiten ein breites Spektrum an Bedürfnissen abdecken.
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

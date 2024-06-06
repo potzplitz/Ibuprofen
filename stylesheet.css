@@ -1,0 +1,19 @@
+/* style für index.html */
+
+body {
+    background-color: #212121;
+}
+
+#accountsuccess {
+    width: 21%;
+    height: 65px;
+    background-color: darkgreen;
+    margin-left: 78.5%;   
+    border-radius: 20px;
+    visibility: hidden;
+}
+
+.info {
+    width: 100%;
+    text-align: center;
+}

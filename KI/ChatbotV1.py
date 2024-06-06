@@ -1,7 +1,7 @@
 import openai
 
 # Replace 'your-api-key' with your actual OpenAI API key
-openai.api_key = 'sk-proj-Ozoy6RXcm4rrEpOa9cZiT3BlbkFJGpQAE85LYjNZkRJKhrmL'
+openai.api_key = 'sk-proj-vQzCChPowemkbhUtM7B4T3BlbkFJntCWP5yB0AvE4GtQswzd'
 
 # Ask the user to select a role
 print("Select a role:")
@@ -20,11 +20,45 @@ else:
     print("Invalid choice, defaulting to Math")
     selected_role = "Math"
 
+print("Select the profesionalism:")
+print("1: for low knowledge")
+print("2: for below average knowledge")
+print("3: for average knowledge")
+print("4: for above average knowledge")
+print("5: for high knowledge")
+prof_choice = input("Enter the number of your choice: ")
+
+if prof_choice == "1":
+    selected_knowledge = "low"
+elif prof_choice == "2":
+    selected_knowledge = "beav"
+elif prof_choice =="3":
+    selected_knowledge = "average"
+elif prof_choice == "4":
+    selected_knowledge = "abav"
+elif prof_choice == "5":
+    selected_knowledge = "high"
+else:
+    print("Invalid choice, defaulting to average knowledge")
+    selected_knowledge = "average"
+
+
+
+
+
+act_knowledge = {
+    "low":"Explain it for someone who know nothing about this topic",
+    "beav":"Explain it for someone who know a little bit about this topic",
+    "average":"Explain it for someone who know a bit more than the basics about this topic",
+    "abav":"Explain it for someone who knows more than the average person about this topic",
+    "high":"Explain it for someone who knows almost anything about this topic."
+}
+
 # Define the system message based on the selected role
 system_message = {
-    "math": "Your name is Mr.C. You can only answer questions about math and physics. All other questions with other topics you have no answer.",
-    "code": "Your name is Mr.C. You can only answer questions about coding. All other questions with other topics you have no answer.",
-    "translate": "Your name is Mr.C. You can only translate text and words from German to English and from English to German. All other questions with other topics you have no answer."
+    "math": "Your name is Mr.C. You can only answer questions about math and physics. All other questions with other topics you have no answer."+act_knowledge[selected_knowledge],
+    "code": "Your name is Mr.C. You can only answer questions about coding. All other questions with other topics you have no answer."+act_knowledge[selected_knowledge],
+    "translate": "Your name is Mr.C. You can only translate text and words from German to English and from English to German. All other questions with other topics you have no answer."+act_knowledge[selected_knowledge]
 }
 
 def ask_gpt(question, chat_log=None):

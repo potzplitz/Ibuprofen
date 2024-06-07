@@ -7,13 +7,13 @@ if ($mysqli->connect_error) {
 }
 
 function addData($username, $email, $password) {
-
     global $mysqli;
 
-    $sql = "INSERT INTO users (username, email, passwort) VALUES (?, ?, ?)";
+    $sql = "INSERT INTO users (username, email, passwort, token) VALUES (?, ?, ?, ?)";
     
     $stmt = $mysqli->prepare($sql);
-    $stmt->bind_param('sss', $username, $email, $password);
+    $token = ""; // oder einen anderen Standardwert oder `NULL`
+    $stmt->bind_param('ssss', $username, $email, $password, $token);
 
     $stmt->execute();
 
@@ -25,6 +25,7 @@ function addData($username, $email, $password) {
 
     $stmt->close(); 
 }
+
 
 if (!function_exists('getData')) {
     function getData($email, $userid) {

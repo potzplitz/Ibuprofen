@@ -109,6 +109,23 @@
                 modal.style.display = 'none';
             }
         }
+        function get_user_input(){
+            let userinput=
+         document.getElementById('userInput').innerText;
+
+         fetch('first_userinput',{
+            method:'POST',
+            headers:{'Content-Type':'application/x-www-form-urlencoded',
+         },
+         body: 'promptText='+encodeURIComponent(userinput),
+        })
+        .then(response=> response.json())
+        .then(data=>{
+            console.log("HIER IST DIE ANTWORT:",data.response)
+            document.getElementById('messages').innerText=data.response;
+        })
+            
+    }
     </script>
 </body>
 </html>

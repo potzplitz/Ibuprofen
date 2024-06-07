@@ -1,4 +1,12 @@
 import openai
+from flask import Flask, request, jsonify, render_template
+from flask_cors import CORS
+
+app = Flask(__name__)
+CORS(app)
+@app.route('/')
+def home():
+    return render_template('index.html')
 
 # Replace 'your-api-key' with your actual OpenAI API key
 openai.api_key = 'sk-proj-vQzCChPowemkbhUtM7B4T3BlbkFJntCWP5yB0AvE4GtQswzd'
@@ -41,10 +49,6 @@ elif prof_choice == "5":
 else:
     print("Invalid choice, defaulting to average knowledge")
     selected_knowledge = "average"
-
-
-
-
 
 act_knowledge = {
     "low":"Explain it for someone who know nothing about this topic",
@@ -91,9 +95,14 @@ if __name__ == "__main__":
     conversation_log = [{"role": "system", "content": system_message[selected_role]}]
     
     # Ask the assistant a question
-    while True:
-        question = input("What's your question? (type 'exit' to quit): ")
-        if question.lower() == "exit":
-            break
-        response, conversation_log = ask_gpt(question, conversation_log)
-        print(f"Assistant: {response}")
+    @app.route('/first_userinput',methods=['POST'])
+    def input_prompt():
+        while True:
+            question=request.form["promptText"]
+            #question = input("What's your question? (type 'exit' to quit): ")
+            if question.lower() == "exit":
+                break
+            response, conversation_log = ask_gpt(question, conversation_log)
+            print(f"Assistant: {response}")
+            return jsonify({'response':response})
+    app.run(debug=True)

@@ -71,6 +71,7 @@
 
     <script>
         function sendMessage() {
+            //event.preventDefault();
             const userInput = document.getElementById('userInput');
             const messages = document.getElementById('messages');
 
@@ -81,7 +82,7 @@
             // Dummy data for demonstration
             const data = {
                 user_message: userInput.value,
-                bot_response: "This is a bot response",
+                bot_response: messages,
                 message_count: 49 // Decremented message count for demonstration
             };
 

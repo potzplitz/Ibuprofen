@@ -9,7 +9,7 @@ def home():
     return render_template('index.html')
 
 # Replace 'your-api-key' with your actual OpenAI API key
-openai.api_key = 'sk-proj-vQzCChPowemkbhUtM7B4T3BlbkFJntCWP5yB0AvE4GtQswzd'
+openai.api_key = 'sk-proj-eg1dLsso5B2Q7W6IK1g4T3BlbkFJeqOkZL960QxNUDr8MJA6'
 
 # Ask the user to select a role
 print("Select a role:")

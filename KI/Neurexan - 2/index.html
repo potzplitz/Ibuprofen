@@ -45,17 +45,8 @@
             display: block;
         }
 
-        .dropdown-menu button {
-            background: none;
-            border: none;
-            padding: 10px;
-            text-align: left;
+        .dropdown-menu input[type="range"] {
             width: 100%;
-            cursor: pointer;
-        }
-
-        .dropdown-menu button:hover {
-            background-color: #f1f1f1;
         }
     </style>
 </head>
@@ -79,9 +70,6 @@
                 <div class="input-area">
                     <div class="settings-button" onclick="toggleDropdown()">^
                         <div class="dropdown-menu" id="dropdownMenu">
-                            <button onclick="toggleSettings()">Settings</button>
-                            <button>Option 1</button>
-                            <button>Option 2</button>
                             <!-- Professionalism Level Input -->
                             <label for="professionalism">Professionalism Level:</label>
                             <input type="range" id="professionalism" min="1" max="5" step="1">
@@ -135,18 +123,6 @@
             };
 
             // Add user message
-            const userMessageElem = document.createElement('div');
-            userMessageElem.classList.add('message');
-            userMessageElem.innerHTML = `
-                <div class="profile-pic">
-                    <img src="profile-pic-url" alt="Profile Picture">
-                </div>
-                <div class="message-content">
-                    ${data.user_message}
-                </div>
-            `;
-            messages.appendChild(userMessageElem);
-            // Create user message element
             const userMessageElem = document.createElement('div');
             userMessageElem.classList.add('message');
             userMessageElem.innerHTML = `

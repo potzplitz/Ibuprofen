@@ -122,7 +122,6 @@
         function sendMessage() {
             const userInput = document.getElementById('userInput');
             const messages = document.getElementById('messages');
-            const messageCountElem = document.getElementById('messageCount');
 
             if (userInput.value.trim() === '') {
                 return;
@@ -147,6 +146,18 @@
                 </div>
             `;
             messages.appendChild(userMessageElem);
+            // Create user message element
+            const userMessageElem = document.createElement('div');
+            userMessageElem.classList.add('message');
+            userMessageElem.innerHTML = `
+                <div class="profile-pic">
+                    <img src="profile-pic-url" alt="Profile Picture">
+                </div>
+                <div class="message-content">
+                    ${userInput.value}
+                </div>
+            `;
+            messages.appendChild(userMessageElem);
 
             // Add bot response
             const botMessageElem = document.createElement('div');
@@ -160,6 +171,8 @@
                 </div>
             `;
             messages.appendChild(botMessageElem);
+            // Scroll to the bottom of the chatbox
+            messages.scrollTop = messages.scrollHeight;
 
             // Clear the input field
             userInput.value = '';
@@ -168,6 +181,8 @@
             messageCountElem.textContent = data.message_count;
 
             toggleSettings(); // Close settings after sending message
+            // Clear the input field
+            userInput.value = '';
         }
 
         function toggleSettings() {

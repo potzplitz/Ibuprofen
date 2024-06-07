@@ -23,21 +23,23 @@
         <div class="main">
             <div class="chatbox">
                 <div class="messages" id="messages"></div>
-                <div class="input-area">
-                    <div class="settings-button" onclick="toggleDropdown()">^</div>
-                    <div class="dropdown-menu" id="dropdownMenu">
-                        <div class="dropdown-content">
+                <div class="dropdown-menu" id="dropdownMenu" style="visibility: hidden;">
+                    <div class="dropdown-content">
+                        <div class="sliderContent">
                             <label for="professionalismRange">Professionalism Level:</label>
                             <input type="range" id="professionalismRange" min="1" max="5" step="1">
-                            <div class="options">
-                                <button onclick="customFunction1()">Option 1</button>
-                                <button onclick="customFunction2()">Option 2</button>
-                                <button onclick="customFunction3()">Option 3</button>
-                                <button onclick="customFunction4()">Option 4</button>
-                                <button onclick="customFunction5()">Option 5</button>
-                            </div>
+                        </div>
+                        <div class="options">
+                            <button class="tutorButton" onclick="customFunction1()">Mathematik</button>
+                            <button class="tutorButton" onclick="customFunction2()">Programmieren</button>
+                            <button class="tutorButton" onclick="customFunction3()">Übersetzer</button>
                         </div>
                     </div>
+                </div>
+                
+                <div class="input-area">
+                    <div class="settings-button" onclick="toggleDropdown()">^</div>
+                    
                     <input type="text" id="userInput" placeholder="Type your message here...">
                     <button onclick="sendMessage()">Send</button>
                 </div>
@@ -60,8 +62,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Modal for message limit reached -->
     <div id="messageLimitModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal()">&times;</span>

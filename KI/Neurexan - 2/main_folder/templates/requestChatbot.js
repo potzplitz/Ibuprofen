@@ -1,49 +1,100 @@
+document.addEventListener('DOMContentLoaded', function() {
+  const knowledgeSlider = document.getElementById('professionalismRange');
+
+
+
+  // Add event listener to the slider
+  knowledgeSlider.addEventListener('input', function() {
+      updateKnowledgeLevel(this.value);
+      console.log(this.value);
+  });
+
+  // Function to update knowledge level display (optional)
+  function updateKnowledgeLevel(value) {
+      let knowledge;
+      switch (value) {
+          case '1':
+              knowledge = 'low';
+              break;
+          case '2':
+              knowledge = 'below_average';
+              break;
+          case '3':
+              knowledge = 'average';
+              break;
+          case '4':
+              knowledge = 'above_average';
+              break;
+          case '5':
+              knowledge = 'high';
+              break;
+      }
+      console.log("Selected knowledge level:", value, "->", knowledge);
+      // You can also update a display element if needed
+      // document.getElementById('knowledgeDisplay').textContent = knowledge;
+  }
+});
+
+let tutorSelection = 'code';  // Default selection
+
 function sendMessage() {
-  //event.preventDefault();
   const userInput = document.getElementById('userInput');
   const messages = document.getElementById('messages');
+  const knowledgeSlider = document.getElementById('professionalismRange');
 
   if (userInput.value.trim() === '') {
       return;
   }
 
-  var xhr = new XMLHttpRequest();
+  let question = userInput.value;
+  let knowledgeValue = knowledgeSlider.value;
+  let knowledge;
 
-  let response;
-  const question = userInput;
-  const url = `http://127.0.0.1:12345/?question=${encodeURIComponent(question)}`;
+  switch (knowledgeValue) {
+      case '1':
+          knowledge = 'low';
+          break;
+      case '2':
+          knowledge = 'below_average';
+          break;
+      case '3':
+          knowledge = 'average';
+          break;
+      case '4':
+          knowledge = 'above_average';
+          break;
+      case '5':
+          knowledge = 'high';
+          break;
+  }
 
+  console.log("Selected knowledge level:", knowledgeValue, "->", knowledge);
+
+  const url = `http://127.0.0.1:12345/?question=${encodeURIComponent(question)}&knowledge=${encodeURIComponent(knowledge)}&role=${encodeURIComponent(tutorSelection)}`;
+
+  const xhr = new XMLHttpRequest();
   xhr.open('GET', url, true);
   xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
   xhr.onload = function () {
-  response = xhr.responseText;
+      const response = xhr.responseText;
+      const json = JSON.parse(response);
 
-  json = JSON.parse(response);
-
-  const botMessageElem = document.createElement('div');
-  botMessageElem.classList.add('message');
-  botMessageElem.innerHTML = `
-  <div class="bot">
-      <div class="profile-pic">
-          <img src="images/pfp.jpg" width=62 height=62 alt="Profile Picture"><p class="name">Mr. C</p>
+      const botMessageElem = document.createElement('div');
+      botMessageElem.classList.add('message');
+      botMessageElem.innerHTML = `
+      <div class="bot">
+          <div class="profile-pic">
+              <img src="images/pfp.jpg" width=62 height=62 alt="Profile Picture"><p class="name">Mr. C</p>
+          </div>
+          <div class="message-content">
+              ${json.response}
+          </div>
       </div>
-      <div class="message-content">
-          ${json.response}
-      </div>
-      </div>
-  `;
-  messages.appendChild(botMessageElem);
+      `;
+      messages.appendChild(botMessageElem);
   };
 
-xhr.send();
-
-
-  // Dummy data for demonstration
-  const data = {
-      user_message: userInput.value,
-      bot_response: messages,
-      message_count: 49 // Decremented message count for demonstration
-  };
+  xhr.send();
 
   // Add user message
   const userMessageElem = document.createElement('div');
@@ -56,12 +107,10 @@ xhr.send();
       <div class="message-content">
           ${userInput.value}
       </div>
-      </div>
+  </div>
   `;
   messages.appendChild(userMessageElem);
 
-  // Add bot response
-  
   // Scroll to the bottom of the chatbox
   messages.scrollTop = messages.scrollHeight;
 
@@ -70,7 +119,7 @@ xhr.send();
 
   // Update message count
   const messageCountElem = document.getElementById('messageCount');
-  messageCountElem.textContent = data.message_count;
+  messageCountElem.textContent = parseInt(messageCountElem.textContent) - 1;
 
   toggleSettings(); // Close settings after sending message
 }
@@ -84,9 +133,24 @@ function toggleSettings() {
   }
 }
 
+let toggle = 0;
+
 function toggleDropdown() {
-  const dropdownMenu = document.getElementById('dropdownMenu');
-  dropdownMenu.classList.toggle('open');
+
+
+  if(toggle == 0) {
+    toggle = 1;
+
+    let dropdownMenu = document.getElementById('dropdownMenu');
+    dropdownMenu.style.visibility = "visible";
+  } else if(toggle == 1) {
+    toggle = 0;
+
+    let dropdownMenu = document.getElementById('dropdownMenu');
+    dropdownMenu.style.visibility = "hidden";
+  }
+
+  
 }
 
 function showModal() {
@@ -108,21 +172,13 @@ window.onclick = function(event) {
 }
 
 function customFunction1() {
-  alert('Option 1 selected');
+  tutorSelection = 'math';
 }
 
 function customFunction2() {
-  alert('Option 2 selected');
+  tutorSelection = 'code';
 }
 
 function customFunction3() {
-  alert('Option 3 selected');
-}
-
-function customFunction4() {
-  alert('Option 4 selected');
-}
-
-function customFunction5() {
-  alert('Option 5 selected');
+  tutorSelection = 'translate';
 }

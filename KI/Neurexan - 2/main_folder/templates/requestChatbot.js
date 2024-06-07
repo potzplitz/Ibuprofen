@@ -1,8 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
   const knowledgeSlider = document.getElementById('professionalismRange');
 
-
-
   // Add event listener to the slider
   knowledgeSlider.addEventListener('input', function() {
       updateKnowledgeLevel(this.value);
@@ -37,6 +35,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 let tutorSelection = 'code';  // Default selection
 
+let counter = 0;
+
 function sendMessage() {
   const userInput = document.getElementById('userInput');
   const messages = document.getElementById('messages');
@@ -68,34 +68,6 @@ function sendMessage() {
           break;
   }
 
-  console.log("Selected knowledge level:", knowledgeValue, "->", knowledge);
-
-  const url = `http://127.0.0.1:12345/?question=${encodeURIComponent(question)}&knowledge=${encodeURIComponent(knowledge)}&role=${encodeURIComponent(tutorSelection)}`;
-
-  const xhr = new XMLHttpRequest();
-  xhr.open('GET', url, true);
-  xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-  xhr.onload = function () {
-      const response = xhr.responseText;
-      const json = JSON.parse(response);
-
-      const botMessageElem = document.createElement('div');
-      botMessageElem.classList.add('message');
-      botMessageElem.innerHTML = `
-      <div class="bot">
-          <div class="profile-pic">
-              <img src="images/pfp.jpg" width=62 height=62 alt="Profile Picture"><p class="name">Mr. C</p>
-          </div>
-          <div class="message-content">
-              ${json.response}
-          </div>
-      </div>
-      `;
-      messages.appendChild(botMessageElem);
-  };
-
-  xhr.send();
-
   // Add user message
   const userMessageElem = document.createElement('div');
   userMessageElem.classList.add('message');
@@ -110,6 +82,48 @@ function sendMessage() {
   </div>
   `;
   messages.appendChild(userMessageElem);
+
+  counter++; // Increment counter before using it in the DOM
+
+  const botMessageElem = document.createElement('div');
+  botMessageElem.classList.add('message');
+  botMessageElem.innerHTML = `
+  <div class="bot">
+      <div class="profile-pic">
+          <img src="images/pfp.jpg" width=62 height=62 alt="Profile Picture"><p class="name">Mr. C</p>
+      </div>
+      <div class="message-content">
+          <p id="response${counter}">Thinking...</p>
+      </div>
+  </div>
+  `;
+  messages.appendChild(botMessageElem);
+
+  const url = `http://127.0.0.1:12345/?question=${encodeURIComponent(question)}&knowledge=${encodeURIComponent(knowledge)}&role=${encodeURIComponent(tutorSelection)}`;
+
+  const xhr = new XMLHttpRequest();
+  xhr.open('GET', url, true);
+  xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+  xhr.onload = function () {
+      if (xhr.status === 200) {
+          const response = xhr.responseText;
+          const json = JSON.parse(response);
+          let responseLabel = document.getElementById(`response${counter}`);
+          if (responseLabel) {
+              responseLabel.innerHTML = json.response;
+          } else {
+              console.error(`Element with id response${counter} not found.`);
+          }
+      } else {
+          console.error(`Request failed with status ${xhr.status}`);
+      }
+  };
+
+  xhr.onerror = function () {
+      console.error("Request failed.");
+  };
+
+  xhr.send();
 
   // Scroll to the bottom of the chatbox
   messages.scrollTop = messages.scrollHeight;
@@ -136,21 +150,14 @@ function toggleSettings() {
 let toggle = 0;
 
 function toggleDropdown() {
-
-
-  if(toggle == 0) {
-    toggle = 1;
-
-    let dropdownMenu = document.getElementById('dropdownMenu');
-    dropdownMenu.style.visibility = "visible";
-  } else if(toggle == 1) {
-    toggle = 0;
-
-    let dropdownMenu = document.getElementById('dropdownMenu');
-    dropdownMenu.style.visibility = "hidden";
+  let dropdownMenu = document.getElementById('dropdownMenu');
+  if (toggle === 0) {
+      toggle = 1;
+      dropdownMenu.style.visibility = "visible";
+  } else {
+      toggle = 0;
+      dropdownMenu.style.visibility = "hidden";
   }
-
-  
 }
 
 function showModal() {
@@ -166,7 +173,7 @@ function closeModal() {
 // Close the modal when clicking outside of it
 window.onclick = function(event) {
   const modal = document.getElementById('messageLimitModal');
-  if (event.target == modal) {
+  if (event.target === modal) {
       modal.style.display = 'none';
   }
 }

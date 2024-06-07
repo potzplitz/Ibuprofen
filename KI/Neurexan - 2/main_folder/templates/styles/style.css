@@ -63,11 +63,7 @@ body {
   border-width: 1px;
 }
 
-.messages {
-  flex-grow: 1;
-  padding: 20px;
-  overflow-y: auto;
-}
+
 
 .input-area {
   display: flex;
@@ -205,13 +201,22 @@ body {
 }
 
 .dropdown-menu {
-  margin-top: 30%;
+  position: absolute;
   width: 300px;
   border-radius: 10px;
   border-style: solid;
   border-width: 1px;
   border-color: #ccc;
   padding: 4px;
+  bottom: 59px; /* Verschiebe die Box um 100px nach oben */
+  background-color: white;
+}
+
+
+.messages {
+  padding: 20px;
+  height: 100%;
+  overflow-y: auto;
 }
 
 .tutorButton {

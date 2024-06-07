@@ -9,22 +9,28 @@ if ($mysqli->connect_error) {
 function addData($username, $email, $password) {
     global $mysqli;
 
-    $sql = "INSERT INTO users (username, email, passwort, token) VALUES (?, ?, ?, ?)";
+    $sql = "INSERT INTO users (username, email, passwort, token, linkToPicture) VALUES (?, ?, ?, ?, ?)";
     
     $stmt = $mysqli->prepare($sql);
-    $token = ""; // oder einen anderen Standardwert oder `NULL`
-    $stmt->bind_param('ssss', $username, $email, $password, $token);
+    if ($stmt === false) {
+        die("Fehler beim Vorbereiten der SQL-Anweisung: " . $mysqli->error);
+    }
+    
+    $empty = ""; // oder einen anderen Standardwert oder `NULL`
+
+    $stmt->bind_param('sssss', $username, $email, $password, $empty, $empty);
 
     $stmt->execute();
 
     if ($stmt->affected_rows > 0) {
         echo "Datensatz erfolgreich eingefügt!";
     } else {
-        echo "Fehler beim Einfügen des Datensatzes.";
+        echo "Fehler beim Einfügen des Datensatzes: " . $stmt->error;
     }
 
     $stmt->close(); 
 }
+
 
 
 if (!function_exists('getData')) {

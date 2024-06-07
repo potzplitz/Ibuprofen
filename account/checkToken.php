@@ -20,12 +20,15 @@ if($token == $databaseToken -> Token) {
 
     modifyUserData($jsondata['userid'], $tokenNew);
 
+    echo json_encode($databaseToken);
+
 
     // benutzerdaten laden
 
 } else {
 
     // token nicht gültig, login nicht gestattet
+    echo "invalid";
 
 }
 

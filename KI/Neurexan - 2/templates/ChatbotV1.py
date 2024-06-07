@@ -13,6 +13,24 @@ openai.api_key = 'sk-proj-vQzCChPowemkbhUtM7B4T3BlbkFJntCWP5yB0AvE4GtQswzd'  # R
 def home():
     return render_template('index.html')
 
+# Ask the user to select a role
+print("Select a role:")
+print("1: Math")
+print("2: Code")
+print("3: Translate")
+role_choice = input("Enter the number of your choice: ")
+
+if role_choice == "1":
+    selected_role = "math"
+elif role_choice == "2":
+    selected_role = "code"
+elif role_choice == "3":
+    selected_role = "translate"
+else:
+    print("Invalid choice, defaulting to Math")
+    selected_role = "Math"
+
+
 # Define the system message and knowledge level descriptions
 act_knowledge = {
     "low": "Explain it for someone who knows nothing about this topic",

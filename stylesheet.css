@@ -1,7 +1,10 @@
+/* CSS styles */
 body {
     background-color: #212121;
     color: #f1f1f1;
     font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
 .container {
@@ -32,46 +35,63 @@ body {
     padding: 10px;
     background-color: #444;
     border-radius: 4px;
+    color: #fff;
+}
+
+.settings-button:hover {
+    background-color: #555;
 }
 
 .dropdown-menu {
     display: none;
     position: absolute;
-    bottom: 40px;
-    left: 0;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
     background-color: #fff;
     color: #000;
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-    z-index: 1;
     padding: 10px;
     border-radius: 4px;
-    min-width: 200px;
+    z-index: 1;
 }
 
-.dropdown-menu.open {
-    display: block;
+.dropdown-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.dropdown-menu input[type="range"] {
+.dropdown-content label {
+    margin-bottom: 10px;
+}
+
+.dropdown-content input[type="range"] {
+    width: 80%;
+    margin-bottom: 10px;
+}
+
+.options {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
     width: 100%;
 }
 
-.settings {
-    display: none;
-    transition: max-height 0.3s ease;
-    overflow: hidden;
-    max-height: 0;
-}
-
-.settings.expanded {
-    display: block;
-    max-height: 500px; /* Adjust as necessary */
-}
-
-.settings-content {
+.options button {
     padding: 10px;
-    background-color: #f1f1f1;
-    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    width: calc(20% - 10px);
+    box-sizing: border-box;
+    border: none;
+    border-radius: 4px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+}
+
+.options button:hover {
+    background-color: #45a049;
 }
 
 .modal {
@@ -83,7 +103,6 @@ body {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgb(0,0,0);
     background-color: rgba(0,0,0,0.4);
 }
 
@@ -94,6 +113,7 @@ body {
     border: 1px solid #888;
     width: 80%;
     max-width: 400px;
+    border-radius: 4px;
 }
 
 .close {

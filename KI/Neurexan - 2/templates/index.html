@@ -26,15 +26,17 @@
                 <div class="input-area">
                     <div class="settings-button" onclick="toggleDropdown()">^</div>
                     <div class="dropdown-menu" id="dropdownMenu">
-                        <!-- Professionalism Level Input -->
-                        <label for="professionalismRange">Professionalism Level:</label>
-                        <input type="range" id="professionalismRange" min="1" max="5" step="1">
-                        <!-- Additional Buttons -->
-                        <button onclick="customFunction1()">Option 1</button>
-                        <button onclick="customFunction2()">Option 2</button>
-                        <button onclick="customFunction3()">Option 3</button>
-                        <button onclick="customFunction4()">Option 4</button>
-                        <button onclick="customFunction5()">Option 5</button>
+                        <div class="dropdown-content">
+                            <label for="professionalismRange">Professionalism Level:</label>
+                            <input type="range" id="professionalismRange" min="1" max="5" step="1">
+                            <div class="options">
+                                <button onclick="customFunction1()">Option 1</button>
+                                <button onclick="customFunction2()">Option 2</button>
+                                <button onclick="customFunction3()">Option 3</button>
+                                <button onclick="customFunction4()">Option 4</button>
+                                <button onclick="customFunction5()">Option 5</button>
+                            </div>
+                        </div>
                     </div>
                     <input type="text" id="userInput" placeholder="Type your message here...">
                     <button onclick="sendMessage()">Send</button>

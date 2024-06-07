@@ -6,7 +6,7 @@ body {
 .createDiv {
     background-color: #141414;
     width: 270px;
-    height: 200px;
+    height: 240px;
     border-radius: 20px;
     margin: 0 auto;
     margin-top: 1.5%;
@@ -50,6 +50,12 @@ body {
 }
 
 .message {
+    width: 100%;
+    text-align: center;
+}
+
+#createAccount {
+    color: gray;
     width: 100%;
     text-align: center;
 }

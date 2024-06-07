@@ -14,7 +14,7 @@ if(value == "success") {
 
 if(loginval == "success") {
     document.getElementById("infotext").innerHTML = "Erfolgreich angemeldet!";
-    document.getElementById("detail").innerHTML = "Ihre Änderungen werden nun automatisch gespeichert.";
+    document.getElementById("detail").innerHTML = "Ihre Änderungen werden nun gespeichert.";
     document.getElementById("accountsuccess").style.visibility = "visible";
 
     setTimeout(function() {

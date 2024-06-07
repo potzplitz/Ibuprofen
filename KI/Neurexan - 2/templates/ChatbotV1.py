@@ -6,7 +6,7 @@ app = Flask(__name__)
 CORS(app)
 @app.route('/')
 def home():
-    return render_template('C:\Users\Herzo_Finn\Documents\GitHub\Ibuprofen\KI\Neurexan - 2\templates\index.html')
+    return render_template('index.html')
 
 # Replace 'your-api-key' with your actual OpenAI API key
 openai.api_key = 'sk-proj-vQzCChPowemkbhUtM7B4T3BlbkFJntCWP5yB0AvE4GtQswzd'
@@ -92,11 +92,19 @@ def ask_gpt(question, chat_log=None):
 # Example usage:
 if __name__ == "__main__":
     # Initialize the conversation log
-    conversation_log = [{"role": "system", "content": system_message[selected_role]}]
+   @app.route('/ask', methods=['POST'])
+   def input_prompt():
+        question = request.form.get("promptText")
+        if question is None or question.lower() == 'exit':
+         return jsonify({'response': 'No question provided or exit command received.'})
+
+         response, conversation_log = ask_gpt(question)
+         return jsonify({'response': response})
+
     
     # Ask the assistant a question
-    @app.route('/first_userinput',methods=['POST'])
-    def input_prompt():
+@app.route('/first_userinput',methods=['POST'])
+def input_prompt():
         while True:
             question=request.form["promptText"]
             #question = input("What's your question? (type 'exit' to quit): ")
@@ -105,4 +113,4 @@ if __name__ == "__main__":
             response, conversation_log = ask_gpt(question, conversation_log)
             print(f"Assistant: {response}")
             return jsonify({'response':response})
-    app.run(debug=True)
+app.run(debug=True)

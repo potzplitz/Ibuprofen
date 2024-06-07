@@ -79,6 +79,38 @@
                 return;
             }
 
+            var xhr = new XMLHttpRequest();
+
+            let response;
+            const question = userInput;
+            const url = `http://127.0.0.1:12345/?question=${encodeURIComponent(question)}`;
+
+            xhr.open('GET', url, true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.onload = function () {
+            response = xhr.responseText;
+
+            json = JSON.parse(response);
+
+
+            console.log(response);
+
+            const botMessageElem = document.createElement('div');
+            botMessageElem.classList.add('message');
+            botMessageElem.innerHTML = `
+                <div class="profile-pic">
+                    <img src="bot-pic-url" alt="Bot Picture">
+                </div>
+                <div class="message-content">
+                    ${json.response}
+                </div>
+            `;
+            messages.appendChild(botMessageElem);
+            };
+
+        xhr.send();
+
+
             // Dummy data for demonstration
             const data = {
                 user_message: userInput.value,
@@ -100,17 +132,7 @@
             messages.appendChild(userMessageElem);
 
             // Add bot response
-            const botMessageElem = document.createElement('div');
-            botMessageElem.classList.add('message');
-            botMessageElem.innerHTML = `
-                <div class="profile-pic">
-                    <img src="bot-pic-url" alt="Bot Picture">
-                </div>
-                <div class="message-content">
-                    ${data.bot_response}
-                </div>
-            `;
-            messages.appendChild(botMessageElem);
+            
             // Scroll to the bottom of the chatbox
             messages.scrollTop = messages.scrollHeight;
 
@@ -176,5 +198,6 @@
             alert('Option 5 selected');
         }
     </script>
+    <script src="requestChatbot.js"></script>
 </body>
 </html>

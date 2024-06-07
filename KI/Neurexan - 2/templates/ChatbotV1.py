@@ -6,7 +6,7 @@ app = Flask(__name__)
 CORS(app)
 @app.route('/')
 def home():
-    return render_template('index.html')
+    return render_template('C:\Users\Herzo_Finn\Documents\GitHub\Ibuprofen\KI\Neurexan - 2\templates\index.html')
 
 # Replace 'your-api-key' with your actual OpenAI API key
 openai.api_key = 'sk-proj-vQzCChPowemkbhUtM7B4T3BlbkFJntCWP5yB0AvE4GtQswzd'

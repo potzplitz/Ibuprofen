@@ -27,13 +27,22 @@ function addData($username, $email, $password) {
 }
 
 if (!function_exists('getData')) {
-    function getData($email, $password) {
+    function getData($email, $userid) {
         global $mysqli;
+
+        if($email != "") {
+            $sql = "SELECT * FROM users WHERE email = ?";
+            $stmt = $mysqli->prepare($sql);
+            $stmt->bind_param('s', $email);
+
+        } else if($userid != "") {
+            $sql = "SELECT * FROM users WHERE userID = ?";
+            $stmt = $mysqli->prepare($sql);
+            $stmt->bind_param('s', $userid);
+
+        }
     
-        $sql = "SELECT * FROM users WHERE email = ?";
-    
-        $stmt = $mysqli->prepare($sql);
-        $stmt->bind_param('s', $email);
+        
         $stmt->execute();
         
         $result = $stmt->get_result();
@@ -49,7 +58,8 @@ if (!function_exists('getData')) {
                 'Email' => $row['email'],
                 'Passwort' => $row['passwort'],
                 'UserID' => $row['userID'],
-                'Username' => $row['username']
+                'Username' => $row['username'],
+                'Token' => $row['token']
             );
         } else {
             return "notFound";  
@@ -57,6 +67,33 @@ if (!function_exists('getData')) {
         $stmt->close();
     }
     }
+
+
+
+    if (!function_exists('modifyUserData')) {
+        function modifyUserData($userid, $token) {
+            global $mysqli;
+        
+            $sql = "UPDATE users SET token = ? WHERE userID = ?";
+        
+            $stmt = $mysqli->prepare($sql);
+        
+            if ($stmt === false) {
+                echo "Fehler beim Vorbereiten der SQL-Anweisung: " . $mysqli->error;
+                return;
+            }
+        
+            $stmt->bind_param('ss', $token, $userid);
+        
+            $stmt->execute();
+        
+            if ($stmt->affected_rows > 0) {
+            } else {
+                echo "Fehler beim Aktualisieren des Datensatzes.";
+            }
+            $stmt->close(); 
+        }
+        }
 
 
 ?>

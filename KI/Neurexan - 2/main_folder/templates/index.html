@@ -5,50 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chatbot Website</title>
     <link rel="stylesheet" href="styles/style.css">
-    <style>
-        .settings {
-            display: none;
-            transition: max-height 0.3s ease;
-            overflow: hidden;
-            max-height: 0;
-        }
-
-        .settings.expanded {
-            display: block;
-            max-height: 500px; /* Adjust as necessary */
-        }
-
-        .settings-button {
-            cursor: pointer;
-            position: relative;
-        }
-
-        .settings-content {
-            padding: 10px;
-            background-color: #f1f1f1;
-            border: 1px solid #ccc;
-        }
-
-        .dropdown-menu {
-            display: none;
-            position: absolute;
-            bottom: 30px;
-            left: 0;
-            background-color: #fff;
-            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-            z-index: 1;
-            padding: 10px;
-            border-radius: 4px;
-        }
-
-        .dropdown-menu.open {
-            display: block;
-        }
-
-        .dropdown-menu input[type="range"] {
-            width: 100%;
-        }
-    </style>
 </head>
 <body>
     <div class="container">
@@ -68,11 +24,18 @@
             <div class="chatbox">
                 <div class="messages" id="messages"></div>
                 <div class="input-area">
-                    <div class="settings-button" onclick="toggleDropdown()">^
-                        <div class="dropdown-menu" id="dropdownMenu">
-                            <!-- Professionalism Level Input -->
-                            <label for="professionalism">Professionalism Level:</label>
-                            <input type="range" id="professionalism" min="1" max="5" step="1">
+                    <div class="settings-button" onclick="toggleDropdown()">^</div>
+                    <div class="dropdown-menu" id="dropdownMenu">
+                        <div class="dropdown-content">
+                            <label for="professionalismRange">Professionalism Level:</label>
+                            <input type="range" id="professionalismRange" min="1" max="5" step="1">
+                            <div class="options">
+                                <button onclick="customFunction1()">Option 1</button>
+                                <button onclick="customFunction2()">Option 2</button>
+                                <button onclick="customFunction3()">Option 3</button>
+                                <button onclick="customFunction4()">Option 4</button>
+                                <button onclick="customFunction5()">Option 5</button>
+                            </div>
                         </div>
                     </div>
                     <input type="text" id="userInput" placeholder="Type your message here...">
@@ -155,11 +118,10 @@
             userInput.value = '';
 
             // Update message count
+            const messageCountElem = document.getElementById('messageCount');
             messageCountElem.textContent = data.message_count;
 
             toggleSettings(); // Close settings after sending message
-            // Clear the input field
-            userInput.value = '';
         }
 
         function toggleSettings() {
@@ -173,11 +135,7 @@
 
         function toggleDropdown() {
             const dropdownMenu = document.getElementById('dropdownMenu');
-            if (dropdownMenu.classList.contains('open')) {
-                dropdownMenu.classList.remove('open');
-            } else {
-                dropdownMenu.classList.add('open');
-            }
+            dropdownMenu.classList.toggle('open');
         }
 
         function showModal() {
@@ -197,23 +155,26 @@
                 modal.style.display = 'none';
             }
         }
-        function get_user_input(){
-            let userinput=
-         document.getElementById('userInput').innerText;
 
-         fetch('first_userinput',{
-            method:'POST',
-            headers:{'Content-Type':'application/x-www-form-urlencoded',
-         },
-         body: 'promptText='+encodeURIComponent(userinput),
-        })
-        .then(response=> response.json())
-        .then(data=>{
-            console.log("HIER IST DIE ANTWORT:",data.response)
-            document.getElementById('messages').innerText=data.response;
-        })
-            
-    }
+        function customFunction1() {
+            alert('Option 1 selected');
+        }
+
+        function customFunction2() {
+            alert('Option 2 selected');
+        }
+
+        function customFunction3() {
+            alert('Option 3 selected');
+        }
+
+        function customFunction4() {
+            alert('Option 4 selected');
+        }
+
+        function customFunction5() {
+            alert('Option 5 selected');
+        }
     </script>
 </body>
 </html>

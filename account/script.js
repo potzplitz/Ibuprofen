@@ -26,7 +26,7 @@ console.log(xhr.status);
 
   if (xhr.status === 200) {
     console.log('Antwort:', xhr.responseText);
-    window.location.href = "../index.html?create=success";
+    window.location.href = "../main.html?create=success";
   } else {
     console.error('Fehler beim Server-Request:', xhr.statusText);
   }

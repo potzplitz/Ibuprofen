@@ -171,3 +171,32 @@ body {
   text-decoration: none;
   cursor: pointer;
 }
+
+.profile-pic {
+  border-radius: 7px;
+  overflow: hidden;
+  width: 120px;
+  height: 50px;
+  background-color: lightgray;
+  margin-top: 20px;
+}
+
+.name {
+  margin-top: -49px;
+  margin-left: 70px;
+  
+}
+
+.message-content {
+  margin-top: -50px;
+  margin-left: 130px;
+}
+
+
+.bot {
+  margin-top: 50px;
+}
+
+.user {
+  margin-top: 31px;
+}

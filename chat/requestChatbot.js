@@ -189,3 +189,23 @@ function customFunction2() {
 function customFunction3() {
   tutorSelection = 'translate';
 }
+
+function redirectToHomepage() {
+    window.location.href = 'index.html'; // Replace with the actual URL of the homepage
+}
+
+function redirectToChatbot() {
+    window.location.href = 'chatbot.html'; // Replace with the actual URL of the chatbot page
+}
+
+function openLibrary() {
+    alert('Library button clicked');
+}
+
+function openDashboard() {
+    alert('Dashboard button clicked');
+}
+
+function openAboutUs() {
+    alert('About Us button clicked');
+}

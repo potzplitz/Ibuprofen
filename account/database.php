@@ -9,7 +9,7 @@ if ($mysqli->connect_error) {
 function addData($username, $email, $password) {
     global $mysqli;
 
-    $sql = "INSERT INTO users (username, email, passwort, token, linkToPicture) VALUES (?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO users (username, email, passwort, token) VALUES (?, ?, ?, ?)";
     
     $stmt = $mysqli->prepare($sql);
     if ($stmt === false) {
@@ -18,7 +18,7 @@ function addData($username, $email, $password) {
     
     $empty = ""; // oder einen anderen Standardwert oder `NULL`
 
-    $stmt->bind_param('sssss', $username, $email, $password, $empty, $empty);
+    $stmt->bind_param('ssss', $username, $email, $password, $empty);
 
     $stmt->execute();
 

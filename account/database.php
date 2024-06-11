@@ -34,7 +34,7 @@ function addData($username, $email, $password) {
 
 
 if (!function_exists('getData')) {
-    function getData($email, $userid) {
+    function getData($email, $userid, $token) {
         global $mysqli;
 
         if($email != "") {
@@ -47,6 +47,10 @@ if (!function_exists('getData')) {
             $stmt = $mysqli->prepare($sql);
             $stmt->bind_param('s', $userid);
 
+        } else if($token != "") {
+            $sql = "SELECT * FROM users WHERE token = ?";
+            $stmt = $mysqli->prepare($sql);
+            $stmt->bind_param('s', $token);
         }
     
         

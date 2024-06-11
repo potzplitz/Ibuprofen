@@ -74,7 +74,7 @@ function sendMessage() {
   userMessageElem.innerHTML = `
   <div class="user">
       <div class="profile-pic">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Hausziege_04.jpg" width=62 height=62 alt="Profile Picture"><p class="name">User</p>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Hausziege_04.jpg" width=62 height=62 alt="Profile Picture"><p class="name">` + data.Username + `</p>
       </div>
       <div class="message-content">
           ${userInput.value}
@@ -188,4 +188,8 @@ function customFunction2() {
 
 function customFunction3() {
   tutorSelection = 'translate';
+}
+
+function deleteCookie() {
+    document.cookie = "UserAuth" + '=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/';
 }

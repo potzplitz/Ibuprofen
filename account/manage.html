@@ -7,6 +7,18 @@
     <link rel="stylesheet" href="manage.css">
 </head>
 <body>
+
+<!-- Header section -->
+<header class="header">
+    <div class="logo">Neurexans Chatbot</div>
+    <nav class="menu">
+        <a href="../index.html"><button class="button-34">Chat with Mr. C</button></a>
+        <a href="../../chat/pages/Contacts.html"><button>Contacts</button></a>
+        <a href="../../chat/pages/home.html"><button>Library</button></a>
+        <a href="../../chat/pages/About us.html"><button>About Us</button></a>
+    </nav>
+</header>
+
 <div class="container">
     <div class="profile-section">
         <div class="profile-picture">
@@ -61,10 +73,24 @@
     function changePassword() {
         const oldPasswordInput = document.getElementById('oldPassword');
         const newPasswordInput = document.getElementById('newPassword');
-        // Here you can implement the logic to change the password
-        // For demonstration purposes, let's just log the old and new passwords
-        console.log("Old Password:", oldPasswordInput.value);
-        console.log("New Password:", newPasswordInput.value);
+        const usernameInput = document.getElementById('username');
+        const emailInput = document.getElementById('email');
+        
+        const oldPassword = oldPasswordInput.value;
+        const newPassword = newPasswordInput.value;
+        const username = usernameInput.value;
+        const email = emailInput.value;
+
+        // Here you can use AJAX or form submission to send this data to your PHP script
+        // For demonstration purposes, let's just log the data
+        console.log("Username:", username);
+        console.log("Email:", email);
+        console.log("Old Password:", oldPassword);
+        console.log("New Password:", newPassword);
+
+        // Reset the input fields
+        oldPasswordInput.value = "";
+        newPasswordInput.value = "";
     }
 </script>
 </body>

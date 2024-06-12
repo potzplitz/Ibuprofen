@@ -3,9 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manage your Account</title>
+    <title>Account Management</title>
+    <link rel="stylesheet" href="manage.css">
 </head>
 <body>
-    
+
+<!-- Header section -->
+<header class="header">
+    <div class="logo">Neurexans Chatbot</div>
+    <nav class="menu">
+        <a href="../chat/index.html"><button class="button-34">Chat with Mr. C</button></a>
+        <a href="../../chat/pages/About us.html"><button>About Us</button></a>
+        <a href="#"><button>Manage Account</button></a>
+    </nav>
+</header>
+
+<div class="container">
+    <div class="profile-section">
+        <div class="profile-picture">
+            <span>PB</span>
+            <img id="profileImage" alt="Profile Picture">
+            <input type="file" accept="image/*" onchange="loadFile(event)">
+        </div>
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" value="example@example.com" disabled>
+        <button id="changeEmailButton" class="email-change-button" onclick="changeEmail()">Change Email</button>
+    </div>
+    <div class="divider"></div> <!-- Divider -->
+    <div class="form-group">
+        <label for="oldPassword">Old Password</label>
+        <input type="password" id="oldPassword" name="oldPassword">
+    </div>
+    <div class="form-group">
+        <label for="newPassword">New Password</label>
+        <input type="password" id="newPassword" name="newPassword">
+    </div>
+    <button id="changePasswordButton" class="password-change-button" onclick="changePassword()">Change Password</button>
+</div>
+
+<script>
+    function loadFile(event) {
+        const profileImage = document.getElementById('profileImage');
+        const span = document.querySelector('.profile-picture span');
+        profileImage.src = URL.createObjectURL(event.target.files[0]);
+        profileImage.onload = () => {
+            URL.revokeObjectURL(profileImage.src);
+            profileImage.style.display = 'block';
+            span.style.display = 'none';
+        };
+    }
+
+    function changeEmail() {
+        const emailInput = document.getElementById('email');
+        if (emailInput.disabled) {
+            emailInput.disabled = false;
+            emailInput.focus();
+        } else {
+            emailInput.disabled = true;
+        }
+    }
+
+    function changePassword() {
+        const oldPasswordInput = document.getElementById('oldPassword');
+        const newPasswordInput = document.getElementById('newPassword');
+        const usernameInput = document.getElementById('username');
+        const emailInput = document.getElementById('email');
+        
+        const oldPassword = oldPasswordInput.value;
+        const newPassword = newPasswordInput.value;
+        const username = usernameInput.value;
+        const email = emailInput.value;
+
+        // Here you can use AJAX or form submission to send this data to your PHP script
+        // For demonstration purposes, let's just log the data
+        console.log("Username:", username);
+        console.log("Email:", email);
+        console.log("Old Password:", oldPassword);
+        console.log("New Password:", newPassword);
+
+        // Reset the input fields
+        oldPasswordInput.value = "";
+        newPasswordInput.value = "";
+    }
+</script>
 </body>
 </html>

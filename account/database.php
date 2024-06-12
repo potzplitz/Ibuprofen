@@ -9,7 +9,7 @@ if ($mysqli->connect_error) {
 function addData($username, $email, $password) {
     global $mysqli;
 
-    $sql = "INSERT INTO users (username, email, passwort, token) VALUES (?, ?, ?, ?)";
+    $sql = "INSERT INTO users (username, email, passwort, token, chatData) VALUES (?, ?, ?, ?, ?)";
     
     $stmt = $mysqli->prepare($sql);
     if ($stmt === false) {
@@ -18,7 +18,7 @@ function addData($username, $email, $password) {
     
     $empty = ""; // oder einen anderen Standardwert oder `NULL`
 
-    $stmt->bind_param('ssss', $username, $email, $password, $empty);
+    $stmt->bind_param('sssss', $username, $email, $password, $empty, $empty);
 
     $stmt->execute();
 
@@ -71,7 +71,8 @@ if (!function_exists('getData')) {
                 'Passwort' => $row['passwort'],
                 'UserID' => $row['userID'],
                 'Username' => $row['username'],
-                'Token' => $row['token']
+                'Token' => $row['token'],
+                'ChatData' => $row['chatData']
             );
         } else {
             return "notFound";  
@@ -109,7 +110,7 @@ if (!function_exists('modifyChats')) {
     function modifyChats($data, $token) {
         global $mysqli;
 
-            $sql = "UPDATE users SET token = ? WHERE token = ?";
+            $sql = "UPDATE users SET chatData = ? WHERE token = ?";
             $stmt = $mysqli->prepare($sql);
             $stmt->bind_param('ss', $data, $token);
 
@@ -127,5 +128,9 @@ if (!function_exists('modifyChats')) {
         }
         $stmt->close(); 
     }
+}
+
+function queryChats($token) {
+
 }
 ?>

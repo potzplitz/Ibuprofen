@@ -7,6 +7,10 @@ document.addEventListener('DOMContentLoaded', function() {
       console.log(this.value);
   });
 
+
+  userChats = [];
+  botChats = [];
+
   // Function to update knowledge level display (optional)
   function updateKnowledgeLevel(value) {
       let knowledge;
@@ -68,6 +72,8 @@ function sendMessage() {
           break;
   }
 
+  counter++;
+
   // Add user message
   const userMessageElem = document.createElement('div');
   userMessageElem.classList.add('message');
@@ -81,9 +87,12 @@ function sendMessage() {
       </div>
   </div>
   `;
+
+  userChats[counter] = userInput.value;
+
   messages.appendChild(userMessageElem);
 
-  counter++; // Increment counter before using it in the DOM
+   // Increment counter before using it in the DOM
 
   const botMessageElem = document.createElement('div');
   botMessageElem.classList.add('message');
@@ -99,7 +108,7 @@ function sendMessage() {
   `;
   messages.appendChild(botMessageElem);
 
-  const url = `http://127.0.0.1:12345/?question=${encodeURIComponent(question)}&knowledge=${encodeURIComponent(knowledge)}&role=${encodeURIComponent(tutorSelection)}`;
+  const url = `http://100.82.214.105:12345/?question=${encodeURIComponent(question)}&knowledge=${encodeURIComponent(knowledge)}&role=${encodeURIComponent(tutorSelection)}`;
 
   const xhr = new XMLHttpRequest();
   xhr.open('GET', url, true);
@@ -111,8 +120,10 @@ function sendMessage() {
           let responseLabel = document.getElementById(`response${counter}`);
           if (responseLabel) {
               responseLabel.innerHTML = json.response;
+              
+              botChats[counter] = json.response;
 
-             // saveUserData(userInput.value, json.response);
+              saveUserData();
           } else {
               console.error(`Element with id response${counter} not found.`);
           }
@@ -196,31 +207,28 @@ function deleteCookie() {
     document.cookie = "UserAuth" + '=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/';
 }
 
-function saveUserData(userData, botData) {
+function saveUserData() {
+    let json = JSON.parse(decodeURIComponent(getCookie("UserAuth")));
+    
+    let jsonData = {
+        "user": userChats,
+        "bot": botChats
+    };
 
-    json = JSON.parse(decodeURIComponent(getCookie("UserAuth")));
+    jsonstring = JSON.stringify(jsonData);
+    console.log(jsonstring);
+
     var xhr = new XMLHttpRequest();
-
     let response;
 
-    xhr.open('POST', '../account/getUserDataWithSessionToken.php', true);
+    xhr.open('POST', 'saveChats.php', true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhr.onload = function () {
-    response = xhr.responseText;
-    checkValid();
-};
+        response = xhr.responseText;
+        checkValid();
+    };
 
-        xhr.send("token=" + json.token);
-
-
-}
-
-
-saveUserData(1, 1);
-
-function loadUser() {
-
-
+    xhr.send("token=" + json.token + "&data=" + jsonstring);
 }
 
     function getCookie(name) {

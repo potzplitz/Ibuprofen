@@ -1,6 +1,11 @@
 <?php
 
-$json = json_decode($_GET['data']);
+require("../account/database.php");
+
+$json = $_POST['data'];
+$token = $_POST['token'];
+
+modifyChats($json, $token);
 
 
 

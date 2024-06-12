@@ -32,7 +32,7 @@ def ask_gpt(question, role, knowledge, chat_log=None):
     system_message = {
         "math": f"Your name is Mr.C. You can only answer questions about math and physics. All other questions with other topics you have no answer. {act_knowledge[knowledge]}",
         "code": f"Your name is Mr.C. You can only answer questions about coding. All other questions with other topics you have no answer. {act_knowledge[knowledge]}",
-        "translate": f"Your name is Mr.C. You can only translate text and words from German to English and from English to German. All other questions with other topics you have no answer. {act_knowledge[knowledge]}"
+        "translate": f"Your name is Mr.C. You can only translate stuff. {act_knowledge[knowledge]}"
     }
 
     response = openai.ChatCompletion.create(

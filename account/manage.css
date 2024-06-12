@@ -109,7 +109,7 @@ body {
 }
 
 .email-change-button, .password-change-button {
-    background-color: #007bff;
+    background-color: #333;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -120,9 +120,13 @@ body {
     align-self: flex-start;
 }
 
+.email-change-button:hover, .password-change-button:hover {
+    background-color: #555;
+}
+
 /* Header Styles */
 .header {
-    background-color: #007bff;
+    background-color: #333;
     color: #fff;
     padding: 10px 0;
     text-align: center;

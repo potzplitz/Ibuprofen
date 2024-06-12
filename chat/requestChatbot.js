@@ -74,7 +74,7 @@ function sendMessage() {
   userMessageElem.innerHTML = `
   <div class="user">
       <div class="profile-pic">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Hausziege_04.jpg" width=62 height=62 alt="Profile Picture"><p class="name">User</p>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Hausziege_04.jpg" width=62 height=62 alt="Profile Picture"><p class="name">` + data.Username + `</p>
       </div>
       <div class="message-content">
           ${userInput.value}
@@ -111,6 +111,8 @@ function sendMessage() {
           let responseLabel = document.getElementById(`response${counter}`);
           if (responseLabel) {
               responseLabel.innerHTML = json.response;
+
+             // saveUserData(userInput.value, json.response);
           } else {
               console.error(`Element with id response${counter} not found.`);
           }
@@ -189,3 +191,51 @@ function customFunction2() {
 function customFunction3() {
   tutorSelection = 'translate';
 }
+
+function deleteCookie() {
+    document.cookie = "UserAuth" + '=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/';
+}
+
+function saveUserData(userData, botData) {
+
+    json = JSON.parse(decodeURIComponent(getCookie("UserAuth")));
+    var xhr = new XMLHttpRequest();
+
+    let response;
+
+    xhr.open('POST', '../account/getUserDataWithSessionToken.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.onload = function () {
+    response = xhr.responseText;
+    checkValid();
+};
+
+        xhr.send("token=" + json.token);
+
+
+}
+
+
+saveUserData(1, 1);
+
+function loadUser() {
+
+
+}
+
+    function getCookie(name) {
+
+        let cookies = document.cookie;
+        
+        let nameEQ = name + "=";
+
+        let cookieArray = cookies.split(';');
+
+        for(let i = 0; i < cookieArray.length; i++) {
+            let cookie = cookieArray[i].trim();
+            if (cookie.indexOf(nameEQ) == 0) {
+                return cookie.substring(nameEQ.length, cookie.length);
+            }
+        }
+       return null;
+    }

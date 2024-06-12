@@ -1,0 +1,12 @@
+#info {
+    width: 200px;
+    height: 70px;
+    box-shadow: 5px 5px 5px silver;
+    border-radius: 20px;
+}
+
+#login {
+    width: 100%;
+    text-align: center;
+    margin-top: 0 auto;
+}

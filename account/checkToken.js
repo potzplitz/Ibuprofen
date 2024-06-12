@@ -2,7 +2,9 @@ var xhr = new XMLHttpRequest();
 
 let response;
 
-xhr.open('POST', 'account/checkToken.php', true);
+let data;
+
+xhr.open('POST', '../account/checkToken.php', true);
 xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 xhr.onload = function () {
   response = xhr.responseText;
@@ -18,9 +20,13 @@ function checkValid() {
   
   } else {
     // benutzerdaten werden nicht geladen -> invalid
+
+    document.cookie = "UserAuth" + '=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/';
+
   }
 }
 
 function loadUserData(json) {
-  document.getElementById("login").innerHTML = json.Username;
+  document.getElementById("login").innerHTML = "Guten Tag, " + json.Username;
+  data = json;
 }

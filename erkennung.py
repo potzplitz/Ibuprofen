@@ -1,38 +1,21 @@
-import time
-import pyaudio
 import speech_recognition as sr
 
-def recognize_speech():
-    # Konfiguration des Audio-Setups
-    audio = pyaudio.PyAudio()
-    stream = audio.open(format=pyaudio.paInt16, channels=1, rate=44100, input=True, frames_per_buffer=1024)
+# Initialisieren des SpeechRecognition-Objekts
+recognizer = sr.Recognizer()
 
-    recognizer = sr.Recognizer()
-
+# Verwenden des Mikrofons, um Audio aufzunehmen
+with sr.Microphone() as source:
+    print("Bitte sprechen Sie jetzt...")
+    # Aufnahme des Audios für 5 Sekunden
+    audio = recognizer.listen(source, timeout=5)
+    
     try:
-        print("Bereit zum Aufnehmen. Sprache wird für 5 Sekunden aufgezeichnet...")
-
-        # Aufnahme von Audio für 5 Sekunden
-        audio_data = stream.read(44100 * 5)  # 5 Sekunden Audio bei 44100 Hz Abtastrate
-
-        # Konvertierung der Rohdaten in ein AudioData-Objekt
-        audio_data_obj = sr.AudioData(audio_data, sample_rate=44100, sample_width=2)
-
-        # Audio transkribieren
-        recognized_text = recognizer.recognize_google(audio_data_obj)
-
-        print("Erkannter Text: " + recognized_text)
-
+        # Versuchen, das gesprochene Audio in Text umzuwandeln
+        text = recognizer.recognize_google(audio, language="de-DE")  # Erkennung in Deutsch
+        print("Sie sagten: " + text)
     except sr.UnknownValueError:
-        print("Konnte den gesprochenen Text nicht verstehen")
-    
+        print("Google konnte das Audio nicht verstehen.")
     except sr.RequestError as e:
-        print("Fehler beim Abrufen der Ergebnisse von Google Speech Recognition service; {0}".format(e))
-    
-    # Beenden des Audio-Streams
-    stream.stop_stream()
-    stream.close()
-    audio.terminate()
+        print(f"Es gab ein Problem bei der Anfrage an Google: {e}")
 
-# Funktion aufrufen
-recognize_speech()
+# Die Variable 'text' enthält nun den erkannten Text.

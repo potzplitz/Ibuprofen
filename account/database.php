@@ -9,7 +9,7 @@ if ($mysqli->connect_error) {
 function addData($username, $email, $password) {
     global $mysqli;
 
-    $sql = "INSERT INTO users (username, email, passwort, token, linkToPicture) VALUES (?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO users (username, email, passwort, token) VALUES (?, ?, ?, ?)";
     
     $stmt = $mysqli->prepare($sql);
     if ($stmt === false) {
@@ -18,7 +18,7 @@ function addData($username, $email, $password) {
     
     $empty = ""; // oder einen anderen Standardwert oder `NULL`
 
-    $stmt->bind_param('sssss', $username, $email, $password, $empty, $empty);
+    $stmt->bind_param('ssss', $username, $email, $password, $empty);
 
     $stmt->execute();
 
@@ -34,7 +34,7 @@ function addData($username, $email, $password) {
 
 
 if (!function_exists('getData')) {
-    function getData($email, $userid) {
+    function getData($email, $userid, $token) {
         global $mysqli;
 
         if($email != "") {
@@ -47,6 +47,10 @@ if (!function_exists('getData')) {
             $stmt = $mysqli->prepare($sql);
             $stmt->bind_param('s', $userid);
 
+        } else if($token != "") {
+            $sql = "SELECT * FROM users WHERE token = ?";
+            $stmt = $mysqli->prepare($sql);
+            $stmt->bind_param('s', $token);
         }
     
         

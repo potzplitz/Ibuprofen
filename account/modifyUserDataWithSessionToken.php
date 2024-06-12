@@ -1,7 +1,6 @@
 <?php
 require("database.php");
 
+$token = $_GET['token'];
 
-$token = $_POST['token'];
-
-echo modifyUserData("", "", $token);
+modifyChats("", $token);

@@ -23,7 +23,7 @@ function addData($username, $email, $password) {
     $stmt->execute();
 
     if ($stmt->affected_rows > 0) {
-        echo "Datensatz erfolgreich eingefügt!";
+        
     } else {
         echo "Fehler beim Einfügen des Datensatzes: " . $stmt->error;
     }
@@ -31,10 +31,8 @@ function addData($username, $email, $password) {
     $stmt->close(); 
 }
 
-
-
 if (!function_exists('getData')) {
-    function getData($email, $userid, $token) {
+    function getData($email, $userid) {
         global $mysqli;
 
         if($email != "") {
@@ -52,8 +50,11 @@ if (!function_exists('getData')) {
             $stmt = $mysqli->prepare($sql);
             $stmt->bind_param('s', $token);
         }
-    
         
+        if ($stmt === false) {
+            die("Fehler beim Vorbereiten der SQL-Anweisung: " . $mysqli->error);
+        }
+
         $stmt->execute();
         
         $result = $stmt->get_result();
@@ -77,34 +78,54 @@ if (!function_exists('getData')) {
         }
         $stmt->close();
     }
-    }
+}
 
+if (!function_exists('modifyUserData')) {
+    function modifyUserData($userid, $token) {
+        global $mysqli;
 
-
-    if (!function_exists('modifyUserData')) {
-        function modifyUserData($userid, $token) {
-            global $mysqli;
-        
             $sql = "UPDATE users SET token = ? WHERE userID = ?";
-        
             $stmt = $mysqli->prepare($sql);
-        
-            if ($stmt === false) {
-                echo "Fehler beim Vorbereiten der SQL-Anweisung: " . $mysqli->error;
-                return;
-            }
-        
             $stmt->bind_param('ss', $token, $userid);
-        
-            $stmt->execute();
-        
-            if ($stmt->affected_rows > 0) {
-            } else {
-                echo "Fehler beim Aktualisieren des Datensatzes.";
-            }
-            $stmt->close(); 
+
+        if ($stmt === false) {
+            echo "Fehler beim Vorbereiten der SQL-Anweisung: " . $mysqli->error;
+            return;
         }
+        
+        $stmt->execute();
+        
+        if ($stmt->affected_rows > 0) {
+           
+        } else {
+            echo "Fehler beim Aktualisieren des Datensatzes.";
         }
+        $stmt->close(); 
+    }
+}
 
 
+if (!function_exists('modifyChats')) {
+    function modifyChats($data, $token) {
+        global $mysqli;
+
+            $sql = "UPDATE users SET token = ? WHERE token = ?";
+            $stmt = $mysqli->prepare($sql);
+            $stmt->bind_param('ss', $data, $token);
+
+        if ($stmt === false) {
+            echo "Fehler beim Vorbereiten der SQL-Anweisung: " . $mysqli->error;
+            return;
+        }
+        
+        $stmt->execute();
+        
+        if ($stmt->affected_rows > 0) {
+           
+        } else {
+            echo "Fehler beim Aktualisieren des Datensatzes.";
+        }
+        $stmt->close(); 
+    }
+}
 ?>

@@ -1,72 +1,83 @@
+/* General styles for the entire body of the webpage */
 body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  background-color: #f0f0f0;
+  font-family: Arial, sans-serif;  /* Use Arial or sans-serif font */
+  margin: 0;  /* Remove default margin */
+  padding: 0;  /* Remove default padding */
+  display: flex;  /* Use flexbox for layout */
+  flex-direction: column;  /* Stack children vertically */
+  height: 100vh;  /* Full viewport height */
+  background-color: #f0f0f0;  /* Light gray background color */
 }
 
+/* Header container styles */
 .header {
-  width: 100%;
-  background-color: #333;
-  color: #fff;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px;
+  width: 100%;  /* Full width */
+  background-color: #333;  /* Dark background color */
+  color: #fff;  /* White text color */
+  display: flex;  /* Use flexbox for layout */
+  justify-content: space-between;  /* Space elements evenly */
+  align-items: center;  /* Center items vertically */
+  padding: 20px;  /* Padding inside the header */
 }
 
+/* Logo styles inside the header */
 .logo {
-  font-size: 24px;
+  font-size: 24px;  /* Large font size */
 }
 
+/* Styles for buttons in the header menu */
 .menu button {
-  background-color: #444;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  margin: 0 10px;
-  cursor: pointer;
-  text-align: left;
+  background-color: #444;  /* Dark gray background color */
+  color: #fff;  /* White text color */
+  border: none;  /* Remove border */
+  padding: 10px 20px;  /* Padding inside the button */
+  margin: 0 10px;  /* Space on left and right of each button */
+  cursor: pointer;  /* Pointer cursor on hover */
+  text-align: left;  /* Left align text */
 }
 
+/* Button hover effect in the header menu */
 .menu button:hover {
-  background-color: #555;
+  background-color: #555;  /* Slightly lighter gray background color */
 }
 
+/* Main content area styles */
 .main {
-  flex-grow: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
+  flex-grow: 1;  /* Expand to fill available space */
+  display: flex;  /* Use flexbox for layout */
+  justify-content: center;  /* Center content horizontally */
+  align-items: center;  /* Center content vertically */
+  padding: 20px;  /* Padding inside the main content area */
 }
 
+/* Homepage content container styles */
 .homepage {
-  text-align: center;
+  text-align: center;  /* Center align text */
 }
 
+/* Styles for the main heading in the homepage */
 .homepage h1 {
-  margin-bottom: 20px;
+  margin-bottom: 20px;  /* Space below the heading */
 }
 
+/* Styles for the paragraph in the homepage */
 .homepage p {
-  margin-bottom: 40px;
-  font-size: 18px;
+  margin-bottom: 40px;  /* Space below the paragraph */
+  font-size: 18px;  /* Larger font size */
 }
 
+/* Styles for the start chat button */
 .start-chat-button {
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  padding: 15px 30px;
-  font-size: 18px;
-  cursor: pointer;
-  border-radius: 8px;
+  background-color: #007bff;  /* Blue background color */
+  color: #fff;  /* White text color */
+  border: none;  /* Remove border */
+  padding: 15px 30px;  /* Padding inside the button */
+  font-size: 18px;  /* Larger font size */
+  cursor: pointer;  /* Pointer cursor on hover */
+  border-radius: 8px;  /* Rounded corners */
 }
 
+/* Start chat button hover effect */
 .start-chat-button:hover {
-  background-color: #0056b3;
+  background-color: #0056b3;  /* Darker blue background color */
 }

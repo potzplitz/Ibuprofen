@@ -1,91 +1,106 @@
+/* General styles for the entire body of the webpage */
 body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  background-color: #f0f0f0;
+  font-family: Arial, sans-serif;  /* Use Arial or sans-serif font */
+  margin: 0;  /* Remove default margin */
+  padding: 0;  /* Remove default padding */
+  display: flex;  /* Use flexbox for layout */
+  flex-direction: column;  /* Stack children vertically */
+  height: 100vh;  /* Full viewport height */
+  background-color: #f0f0f0;  /* Light gray background color */
 }
 
+/* Header container styles */
 .header {
-  width: 100%;
-  background-color: #333;
-  color: #fff;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px;
+  width: 100%;  /* Full width */
+  background-color: #333;  /* Dark background color */
+  color: #fff;  /* White text color */
+  display: flex;  /* Use flexbox for layout */
+  justify-content: space-between;  /* Space elements evenly */
+  align-items: center;  /* Center items vertically */
+  padding: 20px;  /* Padding inside the header */
 }
 
+/* Logo styles inside the header */
 .logo {
-  font-size: 24px;
+  font-size: 24px;  /* Large font size */
 }
 
+/* Styles for buttons in the header menu */
 .menu button {
-  background-color: #444;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  margin: 0 10px;
-  cursor: pointer;
-  text-align: left;
+  background-color: #444;  /* Dark gray background color */
+  color: #fff;  /* White text color */
+  border: none;  /* Remove border */
+  padding: 10px 20px;  /* Padding inside the button */
+  margin: 0 10px;  /* Space on left and right of each button */
+  cursor: pointer;  /* Pointer cursor on hover */
+  text-align: left;  /* Left align text */
 }
 
+/* Button hover effect in the header menu */
 .menu button:hover {
-  background-color: #555;
+  background-color: #555;  /* Slightly lighter gray background color */
 }
 
+/* Main content area styles */
 .main {
-  flex-grow: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
+  flex-grow: 1;  /* Expand to fill available space */
+  display: flex;  /* Use flexbox for layout */
+  justify-content: center;  /* Center content horizontally */
+  align-items: center;  /* Center content vertically */
+  padding: 20px;  /* Padding inside the main content area */
 }
 
+/* Contacts page content container styles */
 .contacts-page {
-  text-align: center;
+  text-align: center;  /* Center align text */
 }
 
+/* Styles for the main heading in the contacts page */
 .contacts-page h1 {
-  margin-bottom: 20px;
+  margin-bottom: 20px;  /* Space below the heading */
 }
 
+/* Styles for the paragraph in the contacts page */
 .contacts-page p {
-  margin-bottom: 40px;
-  font-size: 18px;
+  margin-bottom: 40px;  /* Space below the paragraph */
+  font-size: 18px;  /* Larger font size */
 }
 
+/* Container for the list of contact cards */
 .contacts-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: flex;  /* Use flexbox for layout */
+  flex-wrap: wrap;  /* Allow wrapping of items */
+  justify-content: center;  /* Center content horizontally */
 }
 
+/* Individual contact card styles */
 .contact-card {
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  margin: 10px;
-  width: 250px;
-  text-align: left;
+  background-color: #fff;  /* White background color */
+  border-radius: 8px;  /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* Light shadow */
+  padding: 20px;  /* Padding inside the card */
+  margin: 10px;  /* Margin around the card */
+  width: 250px;  /* Fixed width */
+  text-align: left;  /* Left align text */
 }
 
+/* Styles for the heading in the contact card */
 .contact-card h2 {
-  margin-top: 0;
+  margin-top: 0;  /* Remove top margin */
 }
 
+/* Styles for paragraphs in the contact card */
 .contact-card p {
-  margin: 10px 0;
+  margin: 10px 0;  /* Space above and below the paragraph */
 }
 
+/* Styles for links in the contact card */
 .contact-card a {
-  color: #007bff;
-  text-decoration: none;
+  color: #007bff;  /* Blue text color */
+  text-decoration: none;  /* Remove underline */
 }
 
+/* Link hover effect in the contact card */
 .contact-card a:hover {
-  text-decoration: underline;
+  text-decoration: underline;  /* Add underline on hover */
 }

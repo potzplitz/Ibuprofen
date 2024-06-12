@@ -3,9 +3,199 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manage your Account</title>
+    <title>Account Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 500px; /* Adjusted */
+            margin: 50px auto;
+            padding: 15px; /* Adjusted */
+            background: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        .profile-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px; /* Adjusted */
+            margin-bottom: 10px; /* Adjusted */
+        }
+
+        .profile-picture {
+            position: relative;
+            width: 90px; /* Adjusted */
+            height: 90px; /* Adjusted */
+            border: 2px solid #000;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 90px; /* Adjusted */
+            font-size: 20px; /* Adjusted */
+            cursor: pointer;
+            overflow: hidden;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .profile-picture img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: none;
+        }
+
+        .profile-picture span {
+            display: block;
+        }
+
+        .profile-picture input[type="file"] {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .profile-picture::after {
+            content: "+";
+            position: absolute;
+            bottom: 8px; /* Adjusted */
+            right: 8px; /* Adjusted */
+            color: #000;
+            width: 16px; /* Adjusted */
+            height: 16px; /* Adjusted */
+            text-align: center;
+            line-height: 16px; /* Adjusted */
+            font-size: 12px; /* Adjusted */
+            font-weight: bold;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            font-size: 14px; /* Adjusted */
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 8px; /* Adjusted */
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px; /* Adjusted */
+        }
+
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            border-color: #007bff;
+            outline: none;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+
+        .email-change-button, .password-change-button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 8px 16px; /* Adjusted */
+            cursor: pointer;
+            font-size: 14px; /* Adjusted */
+            margin-top: 10px;
+            align-self: flex-start;
+        }
+
+        /* Divider Style */
+        .divider {
+            width: 100%;
+            height: 1px;
+            background-color: #ccc;
+            margin: 20px 0;
+        }
+    </style>
 </head>
 <body>
-    
+<div class="container">
+    <div class="profile-section">
+        <div class="profile-picture">
+            <span>PB</span>
+            <img id="profileImage" alt="Profile Picture">
+            <input type="file" accept="image/*" onchange="loadFile(event)">
+        </div>
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" value="example@example.com" disabled>
+        <button id="changeEmailButton" class="email-change-button" onclick="changeEmail()">Change Email</button>
+    </div>
+    <div class="divider"></div> <!-- Divider -->
+    <div class="form-group">
+        <label for="oldPassword">Old Password</label>
+        <input type="password" id="oldPassword" name="oldPassword">
+    </div>
+    <div class="form-group">
+        <label for="newPassword">New Password</label>
+        <input type="password" id="newPassword" name="newPassword">
+    </div>
+    <button id="changePasswordButton" class="password-change-button" onclick="changePassword()">Change Password</button>
+</div>
+
+<script>
+    function loadFile(event) {
+        const profileImage = document.getElementById('profileImage');
+        const span = document.querySelector('.profile-picture span');
+        profileImage.src = URL.createObjectURL(event.target.files[0]);
+        profileImage.onload = () => {
+            URL.revokeObjectURL(profileImage.src);
+            profileImage.style.display = 'block';
+            span.style.display = 'none';
+        };
+    }
+
+    function changeEmail() {
+        const emailInput = document.getElementById('email');
+        if (emailInput.disabled) {
+            emailInput.disabled = false;
+            emailInput.focus();
+        } else {
+            emailInput.disabled = true;
+        }
+    }
+
+    function changePassword() {
+        const oldPasswordInput = document.getElementById('oldPassword');
+        const newPasswordInput = document.getElementById('newPassword');
+        // Here you can implement the logic to change the password
+        // For demonstration purposes, let's just log the old and new passwords
+        console.log("Old Password:", oldPasswordInput.value);
+        console.log("New Password:", newPasswordInput.value);
+    }
+</script>
 </body>
 </html>

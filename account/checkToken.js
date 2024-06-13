@@ -32,7 +32,7 @@ function loadUserData(json) {
   if(lock == 0) {
     
   document.getElementById("login").innerHTML = "Guten Tag, " + json.Username;
-  //loadAccount(json);
+  loadAccount(json);
   console.log("test");
 
   try{

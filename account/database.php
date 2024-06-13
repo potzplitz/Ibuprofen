@@ -9,7 +9,7 @@ if ($mysqli->connect_error) {
 function addData($username, $email, $password) {
     global $mysqli;
 
-    $sql = "INSERT INTO users (username, email, passwort, token, chatData) VALUES (?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO users (username, email, passwort, token, chatData, linkToPicture) VALUES (?, ?, ?, ?, ?)";
     
     $stmt = $mysqli->prepare($sql);
     if ($stmt === false) {

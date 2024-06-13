@@ -42,6 +42,14 @@ body {
   background-color: #555;
 }
 
+.menu #delete-chat {
+  background-color: #dc3545; /* Red color for delete button */
+}
+
+.menu #delete-chat:hover {
+  background-color: #c82333; /* Darker red color on hover */
+}
+
 .main {
   width: 80%;
   display: flex;
@@ -62,8 +70,6 @@ body {
   border-style: solid;
   border-width: 1px;
 }
-
-
 
 .input-area {
   display: flex;
@@ -183,14 +189,12 @@ body {
 .name {
   margin-top: -49px;
   margin-left: 70px;
-  
 }
 
 .message-content {
   margin-top: -50px;
   margin-left: 130px;
 }
-
 
 .bot {
   margin-top: 50px;
@@ -211,7 +215,6 @@ body {
   bottom: 59px; /* Verschiebe die Box um 100px nach oben */
   background-color: white;
 }
-
 
 .messages {
   padding: 20px;

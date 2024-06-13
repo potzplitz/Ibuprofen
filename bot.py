@@ -72,4 +72,4 @@ async def frage_command(ctx):
                 await vc.disconnect()
 
 # Setze deinen Discord-Bot-Token
-client.run('MTI1MDA2MjE2NDc5NDkzNzQwNg.GlZdkz.YBNAOCpQL9Xb_y0dswInAYPiRKpLB_-IXAP-gw')
+client.run('MTI1MDA2MjE2NDc5NDkzNzQwNg.GZj4bR.G96GQIyHuFRChYRpJLxsaeV_B9NoGepmh2FbFY')

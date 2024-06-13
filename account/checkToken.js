@@ -30,8 +30,18 @@ let lock = 0;
 
 function loadUserData(json) {
   if(lock == 0) {
-    loadChats(json);
+    
   document.getElementById("login").innerHTML = "Guten Tag, " + json.Username;
+  loadAccount(json);
+  console.log("test");
+
+  try{
+    
+    loadChats(json)
+
+  } catch(err) {
+    console.log("loadChats() nicht definiert");
+  }
 
   data = json;
   lock = 1; 

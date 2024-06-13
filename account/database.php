@@ -130,7 +130,25 @@ if (!function_exists('modifyChats')) {
     }
 }
 
-function queryChats($token) {
+function modifyUser($token, $password, $email) {
+    global $mysqli;
 
+    $sql = "UPDATE users SET passwort = ?, email = ? WHERE token = ?";
+    $stmt = $mysqli->prepare($sql);
+    $stmt->bind_param('ss', $token, $userid);
+
+if ($stmt === false) {
+    echo "Fehler beim Vorbereiten der SQL-Anweisung: " . $mysqli->error;
+    return;
+}
+
+$stmt->execute();
+
+if ($stmt->affected_rows > 0) {
+   
+} else {
+    echo "Fehler beim Aktualisieren des Datensatzes.";
+}
+$stmt->close();
 }
 ?>

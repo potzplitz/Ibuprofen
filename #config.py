@@ -1,0 +1,3 @@
+#config.py
+TOKEN_DISCORD = 'MTI1MDA2MjE2NDc5NDkzNzQwNg.GlZdkz.YBNAOCpQL9Xb_y0dswInAYPiRKpLB_-IXAP-gw'
+TOKEN_OPENAI = 'sk-proj-5jLZmHTAYBQMRuFZdkxwT3BlbkFJsMmRcfD4tCgsqweWzcbI'

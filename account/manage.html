@@ -34,9 +34,10 @@
     </div>
     <div class="form-group">
         <label for="email">Email</label>
-        <input type="email" id="email" name="email" value="example@example.com">
+        <input type="email" id="email" name="email" value="example@example.com" disabled>
+        <button id="changeEmailButton" class="email-change-button" onclick="changeEmail()">Change Email</button>
     </div>
-    <div class="divider"></div>
+    <div class="divider"></div> <!-- Divider -->
     <div class="form-group">
         <label for="oldPassword">Old Password</label>
         <input type="password" id="oldPassword" name="oldPassword">
@@ -45,12 +46,53 @@
         <label for="newPassword">New Password</label>
         <input type="password" id="newPassword" name="newPassword">
     </div>
-    <button id="changePasswordButton" class="password-change-button" onclick="submitChanges()">Speichern</button>
+    <button id="changePasswordButton" class="password-change-button" onclick="changePassword()">Change Password</button>
 </div>
 
-<p id="login"></p>
+<script>
+    function loadFile(event) {
+        const profileImage = document.getElementById('profileImage');
+        const span = document.querySelector('.profile-picture span');
+        profileImage.src = URL.createObjectURL(event.target.files[0]);
+        profileImage.onload = () => {
+            URL.revokeObjectURL(profileImage.src);
+            profileImage.style.display = 'block';
+            span.style.display = 'none';
+        };
+    }
 
-<script src="manage.js"></script>
-<script src="checkToken.js"></script>
+    function changeEmail() {
+        const emailInput = document.getElementById('email');
+        if (emailInput.disabled) {
+            emailInput.disabled = false;
+            emailInput.focus();
+        } else {
+            emailInput.disabled = true;
+        }
+    }
+
+    function changePassword() {
+        const oldPasswordInput = document.getElementById('oldPassword');
+        const newPasswordInput = document.getElementById('newPassword');
+        const usernameInput = document.getElementById('username');
+        const emailInput = document.getElementById('email');
+        
+        const oldPassword = oldPasswordInput.value;
+        const newPassword = newPasswordInput.value;
+        const username = usernameInput.value;
+        const email = emailInput.value;
+
+        // Here you can use AJAX or form submission to send this data to your PHP script
+        // For demonstration purposes, let's just log the data
+        console.log("Username:", username);
+        console.log("Email:", email);
+        console.log("Old Password:", oldPassword);
+        console.log("New Password:", newPassword);
+
+        // Reset the input fields
+        oldPasswordInput.value = "";
+        newPasswordInput.value = "";
+    }
+</script>
 </body>
 </html>

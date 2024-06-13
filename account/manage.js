@@ -30,14 +30,11 @@ function changePassword() {
     const username = usernameInput.value;
     const email = emailInput.value;
 
-    // Here you can use AJAX or form submission to send this data to your PHP script
-    // For demonstration purposes, let's just log the data
     console.log("Username:", username);
     console.log("Email:", email);
     console.log("Old Password:", oldPassword);
     console.log("New Password:", newPassword);
 
-    // Reset the input fields
     oldPasswordInput.value = "";
     newPasswordInput.value = "";
 }
@@ -53,26 +50,40 @@ function loadAccount(json) {
     
 }
 
- function submitChanges() {
-
-
-    var xhr = new XMLHttpRequest();
-
-    let response;
-
-xhr.open('POST', '../account/checkToken.php', true);
-xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-xhr.onload = function () {
-  response = xhr.responseText;
-console.log(response);
-};
-
+function submitChanges() {
+    console.log("submit");
 
     if(document.getElementById("oldPassword").value == jsondata.Passwort) {
-        // modify php data
+        
     }
 
+    uploadImage();
+}
 
+function uploadImage() {
+    const fileInput = document.getElementById('fileInput');
+    const file = fileInput.files[0];
 
+    if (file) {
+        const formData = new FormData();
+        formData.append('file', file);
 
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', 'modifyAccount.php', true);
+
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+                console.log('Bild erfolgreich hochgeladen:', xhr.responseText);
+                const profileImage = document.getElementById('profileImage');
+                profileImage.src = URL.createObjectURL(file);
+                profileImage.style.display = 'block';
+            } else {
+                console.error('Fehler beim Hochladen des Bildes:', xhr.status, xhr.statusText);
+            }
+        };
+
+        xhr.send(formData);
+    } else {
+        console.error('Keine Datei ausgewählt.');
+    }
 }

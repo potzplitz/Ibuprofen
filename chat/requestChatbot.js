@@ -93,7 +93,7 @@ function sendMessage() {
   botMessageElem.innerHTML = `
   <div class="bot">
       <div class="profile-pic">
-          <img src="images/pfp.jpg" width=62 height=62 alt="Profile Picture"><p class="name">Mr. C</p>
+          <img src="images/pb.jpg" width=62 height=62 alt="Profile Picture"><p class="name">Mr. C</p>
       </div>
       <div class="message-content">
           <p id="response${counter}">Thinking...</p>
@@ -102,7 +102,7 @@ function sendMessage() {
   `;
   messages.appendChild(botMessageElem);
 
-  const url = `http://100.82.174.183:12345?question=${encodeURIComponent(question + "The Context of the previous conversation: user chat: " + userChats + ", previous bot chat: " + botChats)}&knowledge=${encodeURIComponent(knowledge)}&role=${encodeURIComponent(tutorSelection)}`;
+  const url = `http://localhost:12345?question=${encodeURIComponent(question + "The Context of the previous conversation: user chat: " + userChats + ", previous bot chat: " + botChats)}&knowledge=${encodeURIComponent(knowledge)}&role=${encodeURIComponent(tutorSelection)}`;
 
   const xhr = new XMLHttpRequest();
   xhr.open('GET', url, true);
@@ -242,12 +242,13 @@ function saveUserData() {
         const userMessageElem = document.createElement('div');
         userMessageElem.classList.add('message');
         userMessageElem.innerHTML = `
-        <div class="user">
-            <div class="profile-pic">
-                <img src="${"../account/" + jsonData.LinkToPicture}" width=52 height=52 alt="Profile Picture"><p class="name">` + jsonData.Username + `</p>
-            </div>
-            <div class="message-content">
+            <div class="userMessage">
                 ${chatJson.user[i]}
+            </div>
+            <div class="user">
+            <div class="profile-pic">
+                <img src="${"../account/" + jsonData.LinkToPicture}" width=52 height=52 alt="Profile Picture">
+                <p class="name">` + jsonData.Username + `</p>
             </div>
         </div>
         `;
@@ -258,10 +259,10 @@ function saveUserData() {
         botMessageElem.innerHTML = `
         <div class="bot">
             <div class="profile-pic">
-                <img src="images/pfp.jpg" width=52 height=52 alt="Profile Picture"><p class="name">Mr. C</p>
+                <img src="images/pb.jpg" width=52 height=52 alt="Profile Picture"><p class="name">Mr. C</p>
             </div>
             <div class="message-content">
-                <p id="response${counter}">` + chatJson.bot[i] + `</p>
+            ${chatJson.bot[i]}
             </div>
         </div>
         `;

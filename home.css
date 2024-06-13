@@ -11,13 +11,14 @@ body {
 
 /* Header container styles */
 .header {
-  width: 100%;  /* Full width */
+  width: 97.9%;  /* Full width */
   background-color: #333;  /* Dark background color */
   color: #fff;  /* White text color */
   display: flex;  /* Use flexbox for layout */
   justify-content: space-between;  /* Space elements evenly */
   align-items: center;  /* Center items vertically */
   padding: 20px;  /* Padding inside the header */
+  margin: 0 auto;
 }
 
 /* Logo styles inside the header */

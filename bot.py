@@ -2,9 +2,10 @@ import discord
 from discord.ext import commands
 import openai
 import speech_recognition as sr
+import pyttsx3  # Import the text-to-speech library
 
 # OpenAI API-Schlüssel
-openai.api_key = 'sk-proj-5jLZmHTAYBQMRuFZdkxwT3BlbkFJsMmRcfD4tCgsqweWzcbI'
+openai.api_key = 'sk-proj-z9kp7g0Bo7StJHFcfGhGT3BlbkFJoffB37e5qs1Ra8ZGdZKv'
 
 # Initialisiere den Discord-Client
 intents = discord.Intents.default()
@@ -13,6 +14,9 @@ client = commands.Bot(command_prefix='!', intents=intents)
 
 # Spracherkennung initialisieren
 recognizer = sr.Recognizer()
+
+# Text-to-Speech Engine initialisieren
+tts_engine = pyttsx3.init()
 
 @client.event
 async def on_ready():
@@ -55,6 +59,10 @@ async def frage_command(ctx):
                     ]
                 )
                 antwort = response['choices'][0]['message']['content']
+
+                # Vorlesen der Antwort über TTS
+                tts_engine.say(antwort)
+                tts_engine.runAndWait()
 
                 # Sende die Antwort zurück
                 await ctx.send(antwort)

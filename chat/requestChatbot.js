@@ -1,6 +1,4 @@
-userChats = [];
-botChats = [];
-
+// This event listener waits for the entire HTML document to load before executing the function.
 document.addEventListener('DOMContentLoaded', function() {
   const knowledgeSlider = document.getElementById('professionalismRange');
 

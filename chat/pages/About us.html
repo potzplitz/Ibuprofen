@@ -1,123 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us</title>
+    <meta charset="UTF-8"> <!-- Set the character encoding for the HTML document -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Ensure proper rendering and touch zooming on mobile devices -->
+    <title>About Us</title> <!-- Title of the webpage -->
     <style>
         * {
-            box-sizing: border-box;
+            box-sizing: border-box; /* Ensure padding and border are included in element's total width and height */
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background: #f8f9fa;
-            color: #444;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Set the font family for the document */
+            margin: 0; /* Remove default margin */
+            padding: 0; /* Remove default padding */
+            background: #f8f9fa; /* Set background color */
+            color: #444; /* Set text color */
+            display: flex; /* Use flexbox for layout */
+            justify-content: center; /* Center items horizontally */
+            align-items: center; /* Center items vertically */
+            min-height: 100vh; /* Set minimum height to full viewport height */
+            flex-direction: column; /* Stack items vertically */
         }
 
         .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 30px auto;
-            padding: 30px;
-            background-color: #fff;
-            border-radius: 20px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
+            width: 90%; /* Set container width */
+            max-width: 1200px; /* Set maximum width */
+            margin: auto; /* Center container */
+            padding: 30px; /* Add padding inside the container */
+            background-color: #fff; /* Set background color */
+            border-radius: 20px; /* Round the corners */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+            text-align: center; /* Center-align text */
+            position: relative; /* Allow positioning of child elements */
+            overflow: hidden; /* Hide overflowing content */
         }
 
         h1 {
-            color: #007bff;
-            font-size: 2.5rem;
-            margin-bottom: 30px;
+            color: #007bff; /* Set heading color */
+            font-size: 2.5rem; /* Set font size */
+            margin-bottom: 30px; /* Add margin below the heading */
         }
 
         .team-member {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin: 20px;
-            overflow: hidden;
-            border-radius: 20px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
+            display: flex; /* Use flexbox for layout */
+            flex-direction: column; /* Stack items vertically */
+            align-items: center; /* Center items horizontally */
+            margin: 20px; /* Add margin around each team member */
+            overflow: hidden; /* Hide overflowing content */
+            border-radius: 20px; /* Round the corners */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+            transition: transform 0.3s ease; /* Add transition for transform property */
         }
 
         .team-member:hover {
-            transform: translateY(-10px);
+            transform: translateY(-10px); /* Move team member up on hover */
         }
 
         .team-member img {
-            width: 200px;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 50%;
+            width: 200px; /* Set image width */
+            height: 200px; /* Set image height */
+            object-fit: cover; /* Ensure image covers the element */
+            border-radius: 50%; /* Make image circular */
         }
 
         .team-member h3 {
-            margin-top: 20px;
-            color: #007bff;
-            font-size: 1.5rem;
-            margin-bottom: 10px;
+            margin-top: 20px; /* Add margin above the heading */
+            color: #007bff; /* Set heading color */
+            font-size: 1.5rem; /* Set font size */
+            margin-bottom: 10px; /* Add margin below the heading */
         }
 
         .team-member p {
-            color: #555;
-            font-size: 1rem;
-            line-height: 1.4;
-            margin-bottom: 20px;
-            padding: 0 15px;
-            flex-grow: 1;
-            overflow: hidden;
-            text-overflow: ellipsis;
+            color: #555; /* Set text color */
+            font-size: 1rem; /* Set font size */
+            line-height: 1.4; /* Set line height */
+            margin-bottom: 20px; /* Add margin below the paragraph */
+            padding: 0 15px; /* Add padding inside the paragraph */
+            flex-grow: 1; /* Allow paragraph to grow */
+            overflow: hidden; /* Hide overflowing content */
+            text-overflow: ellipsis; /* Add ellipsis for overflowing text */
         }
 
         .philosophy-container {
-            position: relative;
-            z-index: 1;
-            background-color: #fff;
-            border-radius: 20px;
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-            margin-top: 50px; /* Adjusted margin */
+            position: relative; /* Allow positioning of child elements */
+            z-index: 1; /* Set stacking order */
+            background-color: #fff; /* Set background color */
+            border-radius: 20px; /* Round the corners */
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+            transition: transform 0.3s ease; /* Add transition for transform property */
+            margin-top: 50px; /* Add margin above the philosophy container */
         }
 
         .pattern-container:hover .philosophy-container {
-            transform: translateY(-10px);
+            transform: translateY(-10px); /* Move philosophy container up on hover */
         }
 
         .philosophy {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            color: #666;
-            text-align: left;
-            padding: 20px;
+            font-size: 1.1rem; /* Set font size */
+            line-height: 1.6; /* Set line height */
+            color: #666; /* Set text color */
+            text-align: left; /* Left-align text */
+            padding: 20px; /* Add padding inside the philosophy container */
         }
 
         .pattern-container {
-            position: relative;
+            position: relative; /* Allow positioning of child elements */
         }
 
-        /* Slightly darker gradient */
         .container:before {
-            content: "";
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.95), rgba(137, 137, 137, 0.8));
-            z-index: -1;
-            border-radius: 20px;
-            transform: translate(-50%, -50%);
+            content: ""; /* Add a pseudo-element */
+            position: absolute; /* Position the pseudo-element absolutely */
+            top: -50%; /* Position it above the container */
+            left: -50%; /* Position it to the left of the container */
+            width: 200%; /* Double the width of the container */
+            height: 200%; /* Double the height of the container */
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.95), rgba(137, 137, 137, 0.8)); /* Set a gradient background */
+            z-index: -1; /* Place it behind the container */
+            border-radius: 20px; /* Round the corners */
+            transform: translate(-50%, -50%); /* Center the pseudo-element */
         }
 
         /* Header Styles */
@@ -156,80 +156,90 @@
         }
 
         .logo a {
-    color: inherit; /* Inherit color from parent (header text color) */
-    text-decoration: none; /* Remove underline */
-}
+            color: inherit; /* Inherit color from parent (header text color) */
+            text-decoration: none; /* Remove underline */
+        }
 
     </style>
 </head>
 <body>
+    <!-- Header section -->
+    <header class="header">
+        <div class="logo"><a href="../../main.html">Neurexans Chatbot</a></div>
+        <nav class="menu">
+            <a href="../index.html"><button class="button-34">Chat with Mr. C</button></a>
+            <a href="../pages/About us.html"><button>About Us</button></a>
+            <a href="../../account/manage.html"><button>Manage Account</button></a>
+        </nav>
+    </header>
 
-<!-- Header section -->
-<header class="header">
-    <div class="logo"><a href="../../main.html">Neurexans Chatbot</a></div>
-    <nav class="menu">
-        <a href="../index.html"><button class="button-34">Chat with Mr. C</button></a>
-        <a href="../pages/About us.html"><button>About Us</button></a>
-        <a href="../../account/manage.html"><button>Manage Account</button></a>
-    </nav>
-</header>
+    <div class="container">
+        <h1>About Us</h1> <!-- Main heading -->
 
-<div class="container">
-    <h1>About Us</h1>
-    
-    <div class="team-member">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Hausziege_04.jpg" alt="Jan">
-        <h3>Jan</h3>
-        <p>GOAT für Datenbanken SQL, PHP. Er ist unser erfahrenster Entwickler, der komplexe Datenbanken entwirft und verwaltet.</p>
-        Email: johndoe@example.com<br>
-        Phone: +1 123-456-7890<br>
-        LinkedIn: <a> href="https://www.linkedin.com/in/johndoe" target="_blank">John Doe<br>
-    </div>
-    
-    <div class="team-member">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Hausziege_04.jpg" alt="Finn">
-        <h3>Finn</h3>
-        <p>KI-Konfiguration. Finn ist unser Spezialist für KI-Konfigurationen und entwickelt maßgeschneiderte Lösungen für unsere Kunden.</p>
-        Email: johndoe@example.com<br>
-        Phone: +1 123-456-7890<br>
-        LinkedIn: <a href="https://www.linkedin.com/in/johndoe" target="_blank">John Doe<br>
-    </div>
+        <!-- Team member Jan -->
+        <div class="team-member">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Hausziege_04.jpg" alt="Jan">
+            <h3>Jan</h3>
+            <p>GOAT für Datenbanken SQL, PHP. Er ist unser erfahrenster Entwickler, der komplexe Datenbanken entwirft und verwaltet.</p>
+            Email: 123@example.com<br>
+            Phone: +1 123-456-7890<br>
+            Discord: potzplitz<br>
+            <p>GitHub: <a href="https://github.com/potzplitz">https://github.com/potzplitz</a>.</p>
+        </div>
 
-    <div class="team-member">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Hausziege_04.jpg" alt="Daniel">
-        <h3>Daniel</h3>
-        <p>Webdesign. Daniel ist verantwortlich für das Design unserer Webseiten und sorgt für eine intuitive Benutzererfahrung.</p>
-        Email: johndoe@example.com<br>
-        Phone: +1 123-456-7890<br>
-        LinkedIn: <a href="https://www.linkedin.com/in/johndoe" target="_blank">John Doe<br>
-    </div>
+        <!-- Team member Finn -->
+        <div class="team-member">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Hausziege_04.jpg" alt="Finn">
+            <h3>Finn</h3>
+            <p>KI-Konfiguration. Finn ist unser Spezialist für KI-Konfigurationen und entwickelt maßgeschneiderte Lösungen für unsere Kunden.</p>
+            Email: 234@example.com<br>
+            Phone: +1 123-456-7890<br>
+            Discord: smartf1st<br>
+            <p>GitHub: <a href="https://github.com/FinnHerzog">https://github.com/FinnHerzog</a>.</p>
+        </div>
 
-    <div class="team-member">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Hausziege_04.jpg" alt="Emil">
-        <h3>Emil</h3>
-        <p>Webdesign. Emil arbeitet eng mit Daniel zusammen und unterstützt bei der Entwicklung ansprechender Designs.</p>
-        Email: johndoe@example.com<br>
-        Phone: +1 123-456-7890<br>
-        LinkedIn: <a href="https://www.linkedin.com/in/johndoe" target="_blank">John Doe<br>
-    </div>
+        <!-- Team member Daniel -->
+        <div class="team-member">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Hausziege_04.jpg" alt="Daniel">
+            <h3>Daniel</h3>
+            <p>Webdesign. Daniel ist verantwortlich für das Design unserer Webseiten und sorgt für eine intuitive Benutzererfahrung.</p>
+            Email: 345@example.com<br>
+            Phone: +1 123-456-7890<br>
+            <a>Discord: affaire</a><br>
+            <p>GitHub: <a href="https://github.com/ilyslay">https://github.com/ilyslay</a>.</p>
+        </div>
 
-    <div class="team-member">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Hausziege_04.jpg" alt="Johannes">
-        <h3>Johannes</h3>
-        <p>CEO. Als CEO leitet Johannes unser Team mit Begeisterung und sorgt für eine klare Vision und strategische Ausrichtung.</p>
-        Email: johndoe@example.com<br>
-        Phone: +1 123-456-7890<br>
-         LinkedIn: <a href="https://www.linkedin.com/in/johndoe" target="_blank">John Doe<br>    </div>
+        <!-- Team member Emil -->
+        <div class="team-member">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Hausziege_04.jpg" alt="Emil">
+            <h3>Emil</h3>
+            <p>Webdesign. Emil arbeitet eng mit Daniel zusammen und unterstützt bei der Entwicklung ansprechender Designs.</p>
+            Email: 456@example.com<br>
+            Phone: +1 123-456-7890<br>
+            <a>Discord: emil6000</a><br>
+            <p>GitHub: <a href="https://github.com/emil6k">https://github.com/emil6k</a>.</p>
+        </div>
 
-    <div class="pattern-container">
-        <div class="philosophy-container">
-            <p class="philosophy">
-                Unsere Philosophie gründet sich auf dem Glauben, dass KI das Potenzial hat, das Leben jedes Einzelnen zu bereichern und zu verbessern. Wir sind davon überzeugt, dass Technologie für alle zugänglich sein sollte, unabhängig vom technischen Wissensstand. Aus diesem Grund haben wir uns zur Aufgabe gemacht, KI-Persönlichkeiten zu entwickeln, die intuitiv, benutzerfreundlich und für jeden leicht verständlich sind. <br><br>
+        <!-- Team member Johannes -->
+        <div class="team-member">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Hausziege_04.jpg" alt="Johannes">
+            <h3>Johannes</h3>
+            <p>CEO. Als CEO leitet Johannes unser Team mit Begeisterung und sorgt für eine klare Vision und strategische Ausrichtung.</p>
+            Email: 567@example.com<br>
+            Phone: +1 123-456-7890<br>
+            <a>Discord: johannes7275</a><br>
+            <p>GitHub: <a href="https://github.com/Johannes130">https://github.com/Johannes130</a>.</p>
+        </div>
 
-                Wir glauben an die Kraft der Vielfalt und daran, dass KI-Persönlichkeiten für verschiedene Alltagssituationen Menschen auf unterschiedliche Weise unterstützen können. Egal, ob es darum geht, den Tag Mathe Aufgaben zu lösen, Texte zu übersetzen oder Code zu verbessern – wir möchten, dass unsere KI-Persönlichkeiten ein breites Spektrum an Bedürfnissen abdecken.
-            </p>
+        <!-- Philosophy section -->
+        <div class="pattern-container">
+            <div class="philosophy-container">
+                <p class="philosophy">
+                    Unsere Philosophie gründet sich auf dem Glauben, dass KI das Potenzial hat, das Leben jedes Einzelnen zu bereichern und zu verbessern. Wir sind davon überzeugt, dass Technologie für alle zugänglich sein sollte, unabhängig vom technischen Wissensstand. Aus diesem Grund haben wir uns zur Aufgabe gemacht, KI-Persönlichkeiten zu entwickeln, die intuitiv, benutzerfreundlich und für jeden leicht verständlich sind. <br><br>
+                    Wir glauben an die Kraft der Vielfalt und daran, dass KI-Persönlichkeiten für verschiedene Alltagssituationen Menschen auf unterschiedliche Weise unterstützen können. Egal, ob es darum geht, den Tag Mathe Aufgaben zu lösen, Texte zu übersetzen oder Code zu verbessern – wir möchten, dass unsere KI-Persönlichkeiten ein breites Spektrum an Bedürfnissen abdecken.
+                </p>
+            </div>
         </div>
     </div>
-</div>
 </body>
 </html>

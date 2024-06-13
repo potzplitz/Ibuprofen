@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chatbot Website</title>
+    <title>Chatbot Neurexan</title>
     <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
@@ -15,6 +15,7 @@
             <div class="menu">
                 <a href="../account/login.html"><button id="login">Anmelden</button></a>
                 <button id="logout" onclick="deleteCookie()">Abmelden</button>
+                <button id="delete-chat" onclick="deleteChat()">Chat löschen</button>
                 <!--<button id="create" onclick="createNewChat()">Create New Chat</button>
                 <a href="About us.html"><button>About Us</button></a>
                 <button>Link to Discord Bot</button>-->
@@ -70,7 +71,13 @@
     </div>
 
     <script>
-        
+        // JavaScript functions
+        function deleteChat() {
+            // Example function to clear messages
+            document.getElementById('messages').innerHTML = '';
+        }
+
+        // You can add more JavaScript functions as needed
     </script>
     <script src="../account/checkToken.js"></script>
     <script src="requestChatbot.js"></script>

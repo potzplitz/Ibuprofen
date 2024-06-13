@@ -1,27 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chatbot Homepage</title>
-    <link rel="stylesheet" href="../styles/home.css">
+    <meta charset="UTF-8"> <!-- Sets the character encoding for the HTML document -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Ensures the page is responsive on all devices -->
+    <title>Chatbot Homepage</title> <!-- Sets the title of the webpage -->
+    <link rel="stylesheet" href="../styles/home.css"> <!-- Links to the external CSS file for styling -->
 </head>
 <body>
+    <!-- Header section containing the logo and navigation menu -->
     <header class="header">
-        <div class="logo">Neurexans Chatbot</div>
-        <nav class="menu">
+        <div class="logo">Neurexans Chatbot</div> <!-- Logo text for the chatbot -->
+        <nav class="menu"> <!-- Navigation menu -->
+            <!-- Button to navigate to the chat page -->
             <a><button class="button-34" role="button" onclick="location.href='../index.html'">Chat with Mr. C</button></a>
+            <!-- Button to navigate to the contacts page -->
+            <a><button onclick="location.href='Contacts.html'">Contacts</button></a>
+            <!-- Button to navigate to the library page -->
+            <a><button onclick="location.href='home.html'">Library</button></a>
+            <!-- Button to navigate to the About Us page -->
             <a><button onclick="location.href='About us.html'">About Us</button></a>
             <a><button onclick="location.href='../../account/manage.html'">Manage Account</button></a>
         </nav>
     </header>
+    <!-- Main content area -->
     <div class="main">
         <div class="homepage">
-            <h1>Welcome to the Chatbot</h1>
-            <p>Experience seamless and engaging conversations with Mr. C, your personal chatbot assistant. Click the button below to start chatting!</p>
+            <h1>Welcome to the Chatbot</h1> <!-- Main heading of the homepage -->
+            <p>Experience seamless and engaging conversations with Mr. C, your personal chatbot assistant. Click the button below to start chatting!</p> <!-- Description paragraph -->
+            <!-- Button to start chatting, triggers the redirectToChatbot function on click -->
             <button class="start-chat-button" onclick="redirectToChatbot()">Start Chatting</button>
         </div>
     </div>
+    <!-- Link to the external JavaScript file -->
     <script src="../scripts/script.js"></script>
 </body>
 </html>

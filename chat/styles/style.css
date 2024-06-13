@@ -45,19 +45,11 @@ body {
 
 /* Specific styles for the "About Us" and "Manage Account" buttons */
 .menu #about-us {
-  background-color: #17a2b8;  /* Cyan background color */
+  background-color: #444;  /* Dark gray background color */
 }
 
 .menu #manage-account {
-  background-color: #28a745;  /* Green background color */
-}
-
-.menu #about-us:hover {
-  background-color: #138496;  /* Darker cyan on hover */
-}
-
-.menu #manage-account:hover {
-  background-color: #218838;  /* Darker green on hover */
+  background-color: #444;  /* Dark gray background color */
 }
 
 /* Button hover effect in the sidebar menu */

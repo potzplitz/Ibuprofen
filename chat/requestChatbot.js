@@ -1,3 +1,6 @@
+userChats = [];
+botChats = [];
+
 document.addEventListener('DOMContentLoaded', function() {
   const knowledgeSlider = document.getElementById('professionalismRange');
 
@@ -8,8 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
 
-  userChats = [];
-  botChats = [];
+
 
   // Function to update knowledge level display (optional)
   function updateKnowledgeLevel(value) {
@@ -108,7 +110,7 @@ function sendMessage() {
   `;
   messages.appendChild(botMessageElem);
 
-  const url = `http://100.82.214.105:12345/?question=${encodeURIComponent(question)}&knowledge=${encodeURIComponent(knowledge)}&role=${encodeURIComponent(tutorSelection)}`;
+  const url = `http://localhost:12345/?question=${encodeURIComponent(question + "The Context of the previous conversation: user chat: " + userChats + ", previous bot chat: " + botChats)}&knowledge=${encodeURIComponent(knowledge)}&role=${encodeURIComponent(tutorSelection)}`;
 
   const xhr = new XMLHttpRequest();
   xhr.open('GET', url, true);
@@ -209,10 +211,11 @@ function deleteCookie() {
 
 function saveUserData() {
     let json = JSON.parse(decodeURIComponent(getCookie("UserAuth")));
+
     
     let jsonData = {
-        "user": userChats,
-        "bot": botChats
+        "user": userChats.filter(element => element !== null),
+        "bot": botChats.filter(element => element !== null)
     };
 
     jsonstring = JSON.stringify(jsonData);
@@ -247,3 +250,59 @@ function saveUserData() {
         }
        return null;
     }
+
+    let lock1 = 0;
+
+
+    function loadChats(jsonData) {
+
+        if(jsonData.ChatData != "") {
+          const messages = document.getElementById('messages');
+          chatJson = JSON.parse(jsonData.ChatData);
+          console.log(chatJson);
+      
+        for(let i = 0; i < chatJson.user.length; i++) {
+          if(chatJson.user[i] != null) {
+      
+        const userMessageElem = document.createElement('div');
+        userMessageElem.classList.add('message');
+        userMessageElem.innerHTML = `
+        <div class="user">
+            <div class="profile-pic">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Hausziege_04.jpg" width=62 height=62 alt="Profile Picture"><p class="name">` + jsonData.Username + `</p>
+            </div>
+            <div class="message-content">
+                ${chatJson.user[i]}
+            </div>
+        </div>
+        `;
+        messages.appendChild(userMessageElem);
+      
+        const botMessageElem = document.createElement('div');
+        botMessageElem.classList.add('message');
+        botMessageElem.innerHTML = `
+        <div class="bot">
+            <div class="profile-pic">
+                <img src="images/pfp.jpg" width=62 height=62 alt="Profile Picture"><p class="name">Mr. C</p>
+            </div>
+            <div class="message-content">
+                <p id="response${counter}">` + chatJson.bot[i] + `</p>
+            </div>
+        </div>
+        `;
+        messages.appendChild(botMessageElem);
+
+        userChats[i] = chatJson.user[i];
+        botChats[i] = chatJson.bot[i];
+        counter = i;
+        }
+
+        
+
+        
+
+        console.log("join: " + userChats);
+      }
+      }
+      
+      }

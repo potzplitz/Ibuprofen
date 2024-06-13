@@ -9,7 +9,7 @@ if ($mysqli->connect_error) {
 function addData($username, $email, $password) {
     global $mysqli;
 
-    $sql = "INSERT INTO users (username, email, passwort, token, chatData, linkToPicture) VALUES (?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO users (username, email, passwort, token, chatData, linkToPicture) VALUES (?, ?, ?, ?, ?, ?)";
     
     $stmt = $mysqli->prepare($sql);
     if ($stmt === false) {
@@ -18,7 +18,7 @@ function addData($username, $email, $password) {
     
     $empty = ""; // oder einen anderen Standardwert oder `NULL`
 
-    $stmt->bind_param('sssss', $username, $email, $password, $empty, $empty);
+    $stmt->bind_param('ssssss', $username, $email, $password, $empty, $empty, $empty);
 
     $stmt->execute();
 
@@ -72,7 +72,8 @@ if (!function_exists('getData')) {
                 'UserID' => $row['userID'],
                 'Username' => $row['username'],
                 'Token' => $row['token'],
-                'ChatData' => $row['chatData']
+                'ChatData' => $row['chatData'],
+                'LinkToPicture' => $row['linkToPicture']
             );
         } else {
             return "notFound";  
@@ -130,25 +131,29 @@ if (!function_exists('modifyChats')) {
     }
 }
 
-function modifyUser($token, $password, $email) {
+function modifyUser($token, $password, $email, $linktopicture) {
     global $mysqli;
 
-    $sql = "UPDATE users SET passwort = ?, email = ? WHERE token = ?";
+    $sql = "UPDATE users SET passwort = ?, email = ?, linkToPicture = ? WHERE token = ?";
     $stmt = $mysqli->prepare($sql);
-    $stmt->bind_param('ss', $token, $userid);
+    $stmt->bind_param('ssss', $password, $email, $linktopicture, $token);
 
-if ($stmt === false) {
-    echo "Fehler beim Vorbereiten der SQL-Anweisung: " . $mysqli->error;
-    return;
+    echo($token . $password . $email . $linktopicture);
+
+    if ($stmt === false) {
+        echo "Fehler beim Vorbereiten der SQL-Anweisung: " . $mysqli->error;
+        return;
+    }
+
+    $stmt->execute();
+
+    if ($stmt->affected_rows > 0) {
+        // Erfolgreich aktualisiert
+    } else {
+        echo "Fehler beim Aktualisieren des Datensatzes.";
+    }
+    $stmt->close();
 }
 
-$stmt->execute();
 
-if ($stmt->affected_rows > 0) {
-   
-} else {
-    echo "Fehler beim Aktualisieren des Datensatzes.";
-}
-$stmt->close();
-}
 ?>

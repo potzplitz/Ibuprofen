@@ -225,11 +225,15 @@ function saveUserData() {
 
     function loadChats(jsonData) {
 
+        console.log(jsonData.LinkToPicture);
+
         if(jsonData.ChatData != "") {
           const messages = document.getElementById('messages');
           chatJson = JSON.parse(jsonData.ChatData);
           console.log(chatJson);
       
+            
+
         for(let i = 0; i < chatJson.user.length; i++) {
           if(chatJson.user[i] != null) {
       
@@ -238,7 +242,7 @@ function saveUserData() {
         userMessageElem.innerHTML = `
         <div class="user">
             <div class="profile-pic">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Hausziege_04.jpg" width=62 height=62 alt="Profile Picture"><p class="name">` + jsonData.Username + `</p>
+                <img src="${"../account/" + jsonData.LinkToPicture}" width=52 height=52 alt="Profile Picture"><p class="name">` + jsonData.Username + `</p>
             </div>
             <div class="message-content">
                 ${chatJson.user[i]}
@@ -252,7 +256,7 @@ function saveUserData() {
         botMessageElem.innerHTML = `
         <div class="bot">
             <div class="profile-pic">
-                <img src="images/pfp.jpg" width=62 height=62 alt="Profile Picture"><p class="name">Mr. C</p>
+                <img src="images/pfp.jpg" width=52 height=52 alt="Profile Picture"><p class="name">Mr. C</p>
             </div>
             <div class="message-content">
                 <p id="response${counter}">` + chatJson.bot[i] + `</p>

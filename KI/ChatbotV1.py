@@ -5,7 +5,7 @@ from urllib.parse import parse_qs
 import json
 
 # Replace 'your-api-key' with your actual OpenAI API key
-openai.api_key = 'sk-proj-5jLZmHTAYBQMRuFZdkxwT3BlbkFJsMmRcfD4tCgsqweWzcbI'
+openai.api_key = 'sk-proj-z9kp7g0Bo7StJHFcfGhGT3BlbkFJoffB37e5qs1Ra8ZGdZKv'
 
 # Define a fixed role and knowledge level
 def ask_gpt(question, role, knowledge, chat_log=None):

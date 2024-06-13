@@ -32,7 +32,7 @@ function loadUserData(json) {
   if(lock == 0) {
     
   document.getElementById("login").innerHTML = "Guten Tag, " + json.Username;
-  loadAccount(json);
+  
   console.log("test");
 
   try{
@@ -41,6 +41,12 @@ function loadUserData(json) {
 
   } catch(err) {
     console.log("loadChats() nicht definiert");
+  }
+
+  try {
+    loadAccount(json);
+  } catch(err) {
+    
   }
 
   data = json;

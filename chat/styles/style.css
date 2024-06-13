@@ -63,8 +63,6 @@ body {
   border-width: 1px;
 }
 
-
-
 .input-area {
   display: flex;
   border-top: 1px solid #ccc;
@@ -191,7 +189,6 @@ body {
   margin-left: 130px;
 }
 
-
 .bot {
   margin-top: 50px;
 }
@@ -208,10 +205,9 @@ body {
   border-width: 1px;
   border-color: #ccc;
   padding: 4px;
-  bottom: 59px; /* Verschiebe die Box um 100px nach oben */
+  bottom: 59px;
   background-color: white;
 }
-
 
 .messages {
   padding: 20px;
@@ -254,4 +250,15 @@ body {
   width: fit-content;
   word-break: break-word;
   border: 0;
+}
+
+/* Additional button styles */
+.grey-button {
+  background-color: grey;
+  color: #fff;
+}
+
+.red-button {
+  background-color: red;
+  color: #fff;
 }

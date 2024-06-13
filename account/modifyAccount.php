@@ -1,7 +1,14 @@
 <?php
+
+$cookievalue =  $_COOKIE['UserAuth'];
+
+$jsondata = json_decode($cookievalue, true);
+
+$userid = $jsondata['userid'];
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['file'])) {
     $targetDirectory = "profilepictures/";
-    $targetFile = $targetDirectory . basename($_FILES['file']['name']);
+    $targetFile = $targetDirectory . $userid . ".png";
     $uploadOk = 1;
     $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
 
@@ -18,16 +25,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['file'])) {
         $uploadOk = 0;
     }
 
-    if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" ) {
-        echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-        $uploadOk = 0;
-    }
 
     if ($uploadOk == 0) {
         echo "Sorry, your file was not uploaded.";
     } else {
         if (move_uploaded_file($_FILES['file']['tmp_name'], $targetFile)) {
-
+                setDatabasePicture("profilepictures/" + $userid + ".png");
         } else {
 
         }
@@ -37,6 +40,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['file'])) {
 }
 
 function setDatabasePicture() {
-
+    
 }
 ?>

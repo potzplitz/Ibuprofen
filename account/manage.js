@@ -50,13 +50,12 @@ function loadAccount(json) {
     
 }
 
-function submitChanges() {
-    console.log("submit");
+ function submitChanges() {
+
 
     if(document.getElementById("oldPassword").value == jsondata.Passwort) {
         
     }
-
     uploadImage();
 }
 

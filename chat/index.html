@@ -15,9 +15,9 @@
             <div class="menu">
                 <a href="../account/login.html"><button id="login">Anmelden</button></a>
                 <button id="logout" onclick="deleteCookie()">Abmelden</button>
-                <!--<button id="create" onclick="createNewChat()">Create New Chat</button>
-                <a href="About us.html"><button>About Us</button></a>
-                <button>Link to Discord Bot</button>-->
+                <a href="pages/About us.html"><button class="grey-button">About Us</button></a>
+                <a href="../account/manage.html"><button class="grey-button">Manage Account</button></a>
+                <a href="#" onclick="deleteChat()"><button class="red-button">Chat löschen</button></a>
             </div>
         </div>
         <div class="main">
@@ -69,9 +69,6 @@
         </div>
     </div>
 
-    <script>
-        
-    </script>
     <script src="../account/checkToken.js"></script>
     <script src="requestChatbot.js"></script>
 </body>

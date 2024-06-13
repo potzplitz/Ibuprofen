@@ -4,16 +4,11 @@ botChats = [];
 document.addEventListener('DOMContentLoaded', function() {
   const knowledgeSlider = document.getElementById('professionalismRange');
 
-  // Add event listener to the slider
   knowledgeSlider.addEventListener('input', function() {
       updateKnowledgeLevel(this.value);
       console.log(this.value);
   });
 
-
-
-
-  // Function to update knowledge level display (optional)
   function updateKnowledgeLevel(value) {
       let knowledge;
       switch (value) {
@@ -34,8 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
               break;
       }
       console.log("Selected knowledge level:", value, "->", knowledge);
-      // You can also update a display element if needed
-      // document.getElementById('knowledgeDisplay').textContent = knowledge;
   }
 });
 
@@ -76,7 +69,6 @@ function sendMessage() {
 
   counter++;
 
-  // Add user message
   const userMessageElem = document.createElement('div');
   userMessageElem.classList.add('message');
   userMessageElem.innerHTML = `
@@ -93,8 +85,6 @@ function sendMessage() {
   userChats[counter] = userInput.value;
 
   messages.appendChild(userMessageElem);
-
-   // Increment counter before using it in the DOM
 
   const botMessageElem = document.createElement('div');
   botMessageElem.classList.add('message');
@@ -140,13 +130,10 @@ function sendMessage() {
 
   xhr.send();
 
-  // Scroll to the bottom of the chatbox
   messages.scrollTop = messages.scrollHeight;
 
-  // Clear the input field
   userInput.value = '';
 
-  // Update message count
   const messageCountElem = document.getElementById('messageCount');
   messageCountElem.textContent = parseInt(messageCountElem.textContent) - 1;
 
@@ -172,24 +159,6 @@ function toggleDropdown() {
   } else {
       toggle = 0;
       dropdownMenu.style.visibility = "hidden";
-  }
-}
-
-function showModal() {
-  const modal = document.getElementById('messageLimitModal');
-  modal.style.display = 'block';
-}
-
-function closeModal() {
-  const modal = document.getElementById('messageLimitModal');
-  modal.style.display = 'none';
-}
-
-// Close the modal when clicking outside of it
-window.onclick = function(event) {
-  const modal = document.getElementById('messageLimitModal');
-  if (event.target === modal) {
-      modal.style.display = 'none';
   }
 }
 
@@ -296,12 +265,6 @@ function saveUserData() {
         botChats[i] = chatJson.bot[i];
         counter = i;
         }
-
-        
-
-        
-
-        console.log("join: " + userChats);
       }
       }
       

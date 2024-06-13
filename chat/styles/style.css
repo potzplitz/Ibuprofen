@@ -185,7 +185,7 @@ body {
 }
 
 .message-content {
-  margin-top: -36px;
+  margin-top: -50px;
   margin-left: 70px;
   max-width: 80%;
   min-height: 50px;
@@ -293,7 +293,7 @@ body {
 }
 
 .user {
-  margin-top: -83px;
+  margin-top: -70px;
   margin-left: 92%;
 }
 

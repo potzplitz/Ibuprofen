@@ -74,14 +74,15 @@ function sendMessage() {
   const userMessageElem = document.createElement('div');
   userMessageElem.classList.add('message');
   userMessageElem.innerHTML = `
-  <div class="user">
-      <div class="profile-pic">
-          <img src="${"../account/" + JSONDATA.LinkToPicture}" width=62 height=62 alt="Profile Picture"><p class="name">` + data.Username + `</p>
-      </div>
-      <div class="message-content">
-          ${userInput.value}
-      </div>
-  </div>
+  <div class="userMessage">
+                ${userInput.value}
+            </div>
+            <div class="user">
+            <div class="profile-pic">
+                <img src="${"../account/" + JSONDATA.LinkToPicture}" width=52 height=52 alt="Profile Picture">
+                <p class="name">` + JSONDATA.Username + `</p>
+            </div>
+        </div>
   `;
 
   userChats[counter] = userInput.value;

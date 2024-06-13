@@ -256,4 +256,30 @@ document.addEventListener('DOMContentLoaded', function() {
       }
       return null;  // Return null if cookie not found.
   }
+
+
+    function redirectToHomepage() {
+    window.location.href = 'index.html'; // Replace with the actual URL of the homepage
+}
+
+function redirectToChatbot() {
+    window.location.href = 'chatbot.html'; // Replace with the actual URL of the chatbot page
+}
+
+function openLibrary() {
+    alert('Library button clicked');
+}
+
+function openDashboard() {
+    alert('Dashboard button clicked');
+}
+
+function openAboutUs() {
+    alert('About Us button clicked');
+}
+
+function openContacts() {
+    window.location.href = 'contacts.html'; // Replace with the actual URL of the contacts page
+}
+
   

@@ -81,3 +81,12 @@ body {
 .start-chat-button:hover {
   background-color: #0056b3;  /* Darker blue background color */
 }
+
+/* Style for Manage Account button */
+.menu button.manage-account {
+  background-color: #6c757d;
+}
+
+.menu button.manage-account:hover {
+  background-color: #5a6268;
+}

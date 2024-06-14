@@ -27,7 +27,7 @@ def recognize_speech():
             return None
 
 # Replace 'your-api-key' with your actual OpenAI API key
-openai.api_key = 'sk-proj-5jLZmHTAYBQMRuFZdkxwT3BlbkFJsMmRcfD4tCgsqweWzcbI'
+openai.api_key = 'sk-proj-4UXiVX0HbxFNAvYew9eVT3BlbkFJ0ExXUP5hkVWQJNHgTdA6'
 
 # Define a function to interact with the GPT assistant
 def ask_gpt(question, role, knowledge, chat_log=None):

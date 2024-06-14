@@ -5,7 +5,7 @@ import speech_recognition as sr
 import pyttsx3  # Import the text-to-speech library
 
 # OpenAI API-Schlüssel
-openai.api_key = 'sk-proj-qQ6cSEsutdwbexCghHD4T3BlbkFJiHSVH0yHGTKgPVEKuILj'
+openai.api_key = 'sk-proj-4UXiVX0HbxFNAvYew9eVT3BlbkFJ0ExXUP5hkVWQJNHgTdA6'
 
 # Initialisiere den Discord-Client
 intents = discord.Intents.default()
@@ -80,4 +80,4 @@ async def frage_command(ctx):
                 await vc.disconnect()
 
 # Setze deinen Discord-Bot-Token
-client.run('MTI1MDA2MjE2NDc5NDkzNzQwNg.GqizR_.1yiG4KKPUYVJRAGzfuLkAMbegomwfCciG3yhFc')
+client.run('MTI1MDA2MjE2NDc5NDkzNzQwNg.Gd_HIF.QUhuhCLTVCqLeeca6B6vUN8gCWPEThmiYxhTz0')

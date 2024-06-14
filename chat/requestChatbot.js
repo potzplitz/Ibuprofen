@@ -279,3 +279,18 @@ function saveUserData() {
       JSONDATA = jsonData;
       
       }
+
+      function deleteChat() {
+        var xhr = new XMLHttpRequest();
+            let response;
+
+            xhr.open('POST', 'saveChats.php', true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.onload = function () {
+                console.log(xhr.responseText);  
+            };
+
+            delData = JSON.parse(decodeURIComponent(getCookie("UserAuth")));
+
+            xhr.send("token=" + delData.token + "&data=" + encodeURIComponent('{"user":[], "bot":[]}'));
+      }

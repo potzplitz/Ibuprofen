@@ -12,4 +12,6 @@ $token = $_POST['token'];
 // and handles modifying chat data in the database based on the provided inputs.
 modifyChats($json, $token);
 
+
+
 ?>

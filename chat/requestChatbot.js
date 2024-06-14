@@ -103,7 +103,7 @@ function sendMessage() {
   `;
   messages.appendChild(botMessageElem);
 
-  const url = `http://localhost:12345?question=${encodeURIComponent(question + "The Context of the previous conversation: user chat: " + userChats + ", previous bot chat: " + botChats)}&knowledge=${encodeURIComponent(knowledge)}&role=${encodeURIComponent(tutorSelection)}`;
+  const url = `http://100.81.104.143:12345?question=${encodeURIComponent(question + "The Context of the previous conversation: user chat: " + userChats + ", previous bot chat: " + botChats)}&knowledge=${encodeURIComponent(knowledge)}&role=${encodeURIComponent(tutorSelection)}`;
 
   const xhr = new XMLHttpRequest();
   xhr.open('GET', url, true);

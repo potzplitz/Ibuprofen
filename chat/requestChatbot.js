@@ -1,4 +1,8 @@
-// This event listener waits for the entire HTML document to load before executing the function.
+userChats = [];
+botChats = [];
+
+let JSONDATA;
+
 document.addEventListener('DOMContentLoaded', function() {
   const knowledgeSlider = document.getElementById('professionalismRange');
 
@@ -30,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
-let tutorSelection = 'code';
+let tutorSelection = 'code';  // Default selection
 
 let counter = 0;
 
@@ -70,14 +74,15 @@ function sendMessage() {
   const userMessageElem = document.createElement('div');
   userMessageElem.classList.add('message');
   userMessageElem.innerHTML = `
-  <div class="user">
-      <div class="profile-pic">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Hausziege_04.jpg" width=62 height=62 alt="Profile Picture"><p class="name">` + data.Username + `</p>
-      </div>
-      <div class="message-content">
-          ${userInput.value}
-      </div>
-  </div>
+  <div class="userMessage">
+                ${userInput.value}
+            </div>
+            <div class="user">
+            <div class="profile-pic">
+                <img src="${"../account/" + JSONDATA.LinkToPicture}" width=52 height=52 alt="Profile Picture">
+                <p class="name">` + JSONDATA.Username + `</p>
+            </div>
+        </div>
   `;
 
   userChats[counter] = userInput.value;
@@ -89,7 +94,7 @@ function sendMessage() {
   botMessageElem.innerHTML = `
   <div class="bot">
       <div class="profile-pic">
-          <img src="images/pfp.jpg" width=62 height=62 alt="Profile Picture"><p class="name">Mr. C</p>
+          <img src="images/pb.jpg" width=62 height=62 alt="Profile Picture"><p class="name">Mr. C</p>
       </div>
       <div class="message-content">
           <p id="response${counter}">Thinking...</p>
@@ -98,7 +103,7 @@ function sendMessage() {
   `;
   messages.appendChild(botMessageElem);
 
-  const url = `http://100.82.174.183:12345/?question=${encodeURIComponent(question + "The Context of the previous conversation: user chat: " + userChats + ", previous bot chat: " + botChats)}&knowledge=${encodeURIComponent(knowledge)}&role=${encodeURIComponent(tutorSelection)}`;
+  const url = `http://100.81.104.143:12345?question=${encodeURIComponent(question + "The Context of the previous conversation: user chat: " + userChats + ", previous bot chat: " + botChats)}&knowledge=${encodeURIComponent(knowledge)}&role=${encodeURIComponent(tutorSelection)}`;
 
   const xhr = new XMLHttpRequest();
   xhr.open('GET', url, true);
@@ -135,7 +140,16 @@ function sendMessage() {
   const messageCountElem = document.getElementById('messageCount');
   messageCountElem.textContent = parseInt(messageCountElem.textContent) - 1;
 
-  toggleSettings();
+  toggleSettings(); // Close settings after sending message
+}
+
+function toggleSettings() {
+  const settings = document.getElementById('settings');
+  if (settings.classList.contains('expanded')) {
+      settings.classList.remove('expanded');
+  } else {
+      settings.classList.add('expanded');
+  }
 }
 
 let toggle = 0;
@@ -214,46 +228,54 @@ function saveUserData() {
 
     function loadChats(jsonData) {
 
-                if(jsonData.ChatData != "") {
-                const messages = document.getElementById('messages');
-                chatJson = JSON.parse(jsonData.ChatData);
-                console.log(chatJson);
-            
-                for(let i = 0; i < chatJson.user.length; i++) {
-                if(chatJson.user[i] != null) {
-            
-                const userMessageElem = document.createElement('div');
-                userMessageElem.classList.add('message');
-                userMessageElem.innerHTML = `
-                <div class="user">
-                    <div class="profile-pic">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Hausziege_04.jpg" width=62 height=62 alt="Profile Picture"><p class="name">` + jsonData.Username + `</p>
-                    </div>
-                    <div class="message-content">
-                        ${chatJson.user[i]}
-                    </div>
-                </div>
-                `;
-                messages.appendChild(userMessageElem);
-            
-                const botMessageElem = document.createElement('div');
-                botMessageElem.classList.add('message');
-                botMessageElem.innerHTML = `
-                <div class="bot">
-                    <div class="profile-pic">
-                        <img src="images/pfp.jpg" width=62 height=62 alt="Profile Picture"><p class="name">Mr. C</p>
-                    </div>
-                    <div class="message-content">
-                        <p id="response${counter}">` + chatJson.bot[i] + `</p>
-                    </div>
-                </div>
-                `;
-                messages.appendChild(botMessageElem);
+        console.log(jsonData.LinkToPicture);
 
-                userChats[i] = chatJson.user[i];
-                botChats[i] = chatJson.bot[i];
-                counter = i;
-            }
+        if(jsonData.ChatData != "") {
+          const messages = document.getElementById('messages');
+          chatJson = JSON.parse(jsonData.ChatData);
+          console.log(chatJson);
+      
+            
+
+        for(let i = 0; i < chatJson.user.length; i++) {
+          if(chatJson.user[i] != null) {
+      
+        const userMessageElem = document.createElement('div');
+        userMessageElem.classList.add('message');
+        userMessageElem.innerHTML = `
+            <div class="userMessage">
+                ${chatJson.user[i]}
+            </div>
+            <div class="user">
+            <div class="profile-pic">
+                <img src="${"../account/" + jsonData.LinkToPicture}" width=52 height=52 alt="Profile Picture">
+                <p class="name">` + jsonData.Username + `</p>
+            </div>
+        </div>
+        `;
+        messages.appendChild(userMessageElem);
+      
+        const botMessageElem = document.createElement('div');
+        botMessageElem.classList.add('message');
+        botMessageElem.innerHTML = `
+        <div class="bot">
+            <div class="profile-pic">
+                <img src="images/pb.jpg" width=52 height=52 alt="Profile Picture"><p class="name">Mr. C</p>
+            </div>
+            <div class="message-content">
+            ${chatJson.bot[i]}
+            </div>
+        </div>
+        `;
+        messages.appendChild(botMessageElem);
+
+        userChats[i] = chatJson.user[i];
+        botChats[i] = chatJson.bot[i];
+        counter = i;
         }
-    }      
-}
+      }
+      }
+
+      JSONDATA = jsonData;
+      
+      }

@@ -27,7 +27,7 @@ function makeRequest(email, password) {
         if(xhr.responseText != "notFound") {
 
             if(xhr.responseText == 1) {
-                window.location.href = "../main.html?login=success";
+                window.location.href = "../index.html?login=success";
             } else {
                 errorBox.style.visibility="visible";
                 // passwort nicht korrekt

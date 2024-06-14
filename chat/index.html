@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chatbot Neurexan</title>
+    <title>Chatbot Website</title>
     <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
@@ -15,12 +15,9 @@
             <div class="menu">
                 <a href="../account/login.html"><button id="login">Anmelden</button></a>
                 <button id="logout" onclick="deleteCookie()">Abmelden</button>
-                <a href="pages/About us.html" id="pages/about-us"><button id="about-us">About Us</button></a>
-                <a href="../account/manage.html" id="manage-account-link"><button id="manage-account">Manage Account</button></a>
-                <button id="delete-chat" onclick="deleteChat()">Chat löschen</button>
-                <!--<button id="create" onclick="createNewChat()">Create New Chat</button>
-                <a href="About us.html"><button>About Us</button></a>
-                <button>Link to Discord Bot</button>-->
+                <a href="../about/"><button class="grey-button">About Us</button></a>
+                <a href="../account/manage.html"><button class="grey-button">Manage Account</button></a>
+                <a href="#" onclick="deleteChat()"><button class="red-button">Chat löschen</button></a>
             </div>
         </div>
         <div class="main">
@@ -72,25 +69,6 @@
         </div>
     </div>
 
-    <script>
-        // JavaScript functions
-        function deleteChat() {
-            // Example function to clear messages
-            document.getElementById('messages').innerHTML = '';
-        }
-
-        function aboutUs() {
-            // Example function to navigate to About Us page
-            window.location.href = 'about-us.html';
-        }
-
-        function manageAccount() {
-            // Example function to navigate to Manage Account page
-            window.location.href = 'manage-account.html';
-        }
-
-        // You can add more JavaScript functions as needed
-    </script>
     <script src="../account/checkToken.js"></script>
     <script src="requestChatbot.js"></script>
 </body>

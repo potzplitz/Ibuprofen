@@ -46,6 +46,13 @@ function loadAccount(json) {
     document.getElementById("email").value = json.Email;
     document.getElementById("username").value = json.Username;
 
+    const profileImage = document.getElementById('profileImage');
+    const span = document.querySelector('.profile-picture span');
+
+    profileImage.style.display = 'block';
+    profileImage.src = json.LinkToPicture;
+    span.style.display = 'none';
+
     jsondata = json;
     
 }

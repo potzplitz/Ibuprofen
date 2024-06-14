@@ -1,10 +1,14 @@
 <?php
 
+require("database.php");
+
 $cookievalue =  $_COOKIE['UserAuth'];
 
 $jsondata = json_decode($cookievalue, true);
 
-$userid = $jsondata['userid'];
+ $userid = $jsondata['userid'];
+
+$database = getData("", $userid);
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['file'])) {
     $targetDirectory = "profilepictures/";
@@ -30,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['file'])) {
         echo "Sorry, your file was not uploaded.";
     } else {
         if (move_uploaded_file($_FILES['file']['tmp_name'], $targetFile)) {
-                setDatabasePicture("profilepictures/" + $userid + ".png");
+                modifyUser($jsondata['token'], $database -> Passwort, $database -> Email, "profilepictures/" . $userid . ".png");
         } else {
 
         }
@@ -39,7 +43,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['file'])) {
 
 }
 
-function setDatabasePicture() {
-    
-}
 ?>

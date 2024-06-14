@@ -132,11 +132,8 @@ function sendMessage() {
   };
 
   xhr.send();
-
   messages.scrollTop = messages.scrollHeight;
-
   userInput.value = '';
-
   const messageCountElem = document.getElementById('messageCount');
   messageCountElem.textContent = parseInt(messageCountElem.textContent) - 1;
 
@@ -184,7 +181,6 @@ function deleteCookie() {
 function saveUserData() {
     let json = JSON.parse(decodeURIComponent(getCookie("UserAuth")));
 
-    
     let jsonData = {
         "user": userChats.filter(element => element !== null),
         "bot": botChats.filter(element => element !== null)
@@ -224,8 +220,6 @@ function saveUserData() {
     }
 
     let lock1 = 0;
-
-
     function loadChats(jsonData) {
 
         console.log(jsonData.LinkToPicture);
